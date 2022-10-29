@@ -4,16 +4,18 @@ import {MatInputModule} from '@angular/material/input';
 
 import { AuthRoutingModule } from './auth-routing.module';
 import { AuthComponent } from './components/auth/auth.component';
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
   declarations: [
     AuthComponent
   ],
-  imports: [
-    CommonModule,
-    MatInputModule,
-    AuthRoutingModule,
-  ]
+    imports: [
+        CommonModule,
+        MatInputModule,
+        AuthRoutingModule,
+        FormsModule,
+    ]
 })
 export class AuthModule { }
