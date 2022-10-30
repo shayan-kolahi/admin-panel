@@ -54,7 +54,7 @@ $admin-panel-theme: mat.define-light-theme((
   url("assets/fonts/iransansdn/IRANSansDNFaNum.woff")
 }
 
-body:not(.fa,.fa-brands,.fa-duotone,.fa-light,.fa-regular,.fa-solid,.fa-thin,.fab,.fad,.fal,.far,.fas,.fat) *{ font-family: iransans , sans-serif ; direction: rtl}
+body:not(.fa,.fa-brands,.fa-duotone,.fa-light,.fa-regular,.fa-solid,.fa-thin,.fab,.fad,.fal,.far,.fas,.fat,.title_font) *{ font-family: iransans , sans-serif ; direction: rtl}
 
 
 @tailwind base;
@@ -984,3 +984,10 @@ body:not(.fa,.fa-brands,.fa-duotone,.fa-light,.fa-regular,.fa-solid,.fa-thin,.fa
 
 //col bootstrap
 
+.m-0 {
+  margin: 0 !important;
+}
+
+.title_font{
+  font-family: 'Mikhak' , sans-serif !important;
+}
