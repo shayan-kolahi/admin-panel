@@ -12,8 +12,12 @@
             </div>
             <div class="col-lg-6 p-1 flex flex-col relative">
               <label class="mb-3 flex text-base text-gray-500	">رمز کاربری</label>
-              <input [(ngModel)]="LogInInput.password" name="password" type="password" placeholder="..." class="pr-9 text-base input input-bordered input-gray w-full" />
+              <input [(ngModel)]="LogInInput.password" name="password" [type]="eyes.eye1 ? 'text' : 'password'" placeholder="..." class="pr-9 text-base input input-bordered input-gray w-full" />
               <i class="far fa-key-skeleton absolute right-4 text-gray-400 text-lg bottom-3"></i>
+              <i class="far absolute left-4 text-gray-400 text-lg bottom-3 cursor-pointer"
+                 [class]="eyes.eye1 ? 'fa-eye-slash' : 'fa-eye'"
+                 (click)="eyes.eye1 = !eyes.eye1;">
+              </i>
             </div>
             <div class="w-100 mx-auto mt-7 p-1 flex flex-col">
               <button (click)="logInValidationAuth()" class="btn btn-primary">ارسال</button>
@@ -27,26 +31,34 @@
             </div>
             <div class="col-lg-6 p-1 flex flex-col relative">
               <label class="mb-3 flex text-base text-gray-500	">ایمیل</label>
-              <input type="text" placeholder="test@test.com" class="pr-9 text-base input input-bordered input-gray w-full" />
+              <input [(ngModel)]="RegisterInput.email" type="email" placeholder="test@test.com" class="pr-9 text-base input input-bordered input-gray w-full" />
               <i class="far fa-at absolute right-4 text-gray-400 text-lg bottom-3"></i>
             </div>
             <div class="col-lg-6 p-1 flex flex-col relative">
               <label class="mb-3 flex text-base text-gray-500	">نام</label>
-              <input type="text" placeholder="نام و نام خانوادگی" class="pr-9 text-base input input-bordered input-gray w-full" />
+              <input [(ngModel)]="RegisterInput.name" type="text" placeholder="نام و نام خانوادگی" class="pr-9 text-base input input-bordered input-gray w-full" />
               <i class="far fa-user absolute right-4 text-gray-400 text-lg bottom-3"></i>
             </div>
             <div class="col-lg-6 p-1 flex flex-col relative">
               <label class="mb-3 flex text-base text-gray-500	">رمز کاربری</label>
-              <input type="password" placeholder="..." class="pr-9 text-base input input-bordered input-gray w-full" />
+              <input [(ngModel)]="RegisterInput.password" [type]="eyes.eye2 ? 'text' : 'password'" placeholder="..." class="pr-9 text-base input input-bordered input-gray w-full" />
               <i class="far fa-key-skeleton absolute right-4 text-gray-400 text-lg bottom-3"></i>
+              <i class="far absolute left-4 text-gray-400 text-lg bottom-3 cursor-pointer"
+                 [class]="eyes.eye2 ? 'fa-eye-slash' : 'fa-eye'"
+                 (click)="eyes.eye2 = !eyes.eye2;">
+              </i>
             </div>
             <div class="col-lg-6 p-1 flex flex-col relative">
               <label class="mb-3 flex text-base text-gray-500	">تکرار رمز کاربری</label>
-              <input type="password" placeholder="..." class="pr-9 text-base input input-bordered input-gray w-full" />
+              <input [(ngModel)]="RegisterInput.re_password" [type]="eyes.eye3 ? 'text' : 'password'" placeholder="..." class="pr-9 text-base input input-bordered input-gray w-full" />
               <i class="far fa-key-skeleton absolute right-4 text-gray-400 text-lg bottom-3"></i>
+              <i class="far absolute left-4 text-gray-400 text-lg bottom-3 cursor-pointer"
+                 [class]="eyes.eye3 ? 'fa-eye-slash' : 'fa-eye'"
+                 (click)="eyes.eye3 = !eyes.eye3;">
+              </i>
             </div>
             <div class="w-100 mx-auto mt-7 p-1 flex flex-col">
-              <button class="btn btn-primary">ارسال</button>
+              <button (click)="registerValidationAuth()" class="btn btn-primary">ارسال</button>
               <button (click)="changeAuth()" class="btn btn-link">ورود</button>
             </div>
           </div>
@@ -54,3 +66,4 @@
       </div>
   </div>
 </section>
+
