@@ -14,7 +14,6 @@ export class PanelComponent implements OnInit {
 
   isActive_sidebar : boolean = true;
   status_sidebar(e: boolean) {
-    console.log(e)
     this.isActive_sidebar = e;
   }
 
