@@ -2,13 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import {AuthValidationService} from '../../../services/auth-validation.service'
 import {LogInInput} from '../../../interface/log-in-input'
 import {RegisterInput} from '../../../interface/register-input'
+import { Router } from '@angular/router';
+import {ServiceAuthService} from "../../../services/service-auth.service";
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
 })
 export class AuthComponent implements OnInit {
 
-  constructor(private AuthValidationService:AuthValidationService) { }
+  constructor(private AuthValidationService:AuthValidationService,
+              private router: Router,
+              private ServiceAuthService:ServiceAuthService) { }
 
   ngOnInit(): void {}
 
@@ -32,11 +36,13 @@ export class AuthComponent implements OnInit {
     if (!this.AuthValidationService.isEmpty(this.LogInInput.email) ||
       !this.AuthValidationService.isEmpty(this.LogInInput.password)){
       alert("فیلد ها را پر کنید !")
-    }
-    if (!this.AuthValidationService.isEmail(this.LogInInput.email)){
+    } else if (!this.AuthValidationService.isEmail(this.LogInInput.email)){
       alert("لطفا ایمیل درست وارد کنید !")
+    } else {
+      this.ServiceAuthService.changeActive()
+      localStorage.setItem("auth" , JSON.stringify(this.LogInInput))
+      this.router.navigate(['/'])
     }
-    //
   }
 
 
@@ -54,14 +60,15 @@ export class AuthComponent implements OnInit {
       !this.AuthValidationService.isEmpty(this.RegisterInput.password) ||
       !this.AuthValidationService.isEmpty(this.RegisterInput.re_password)){
       alert("فیلد ها را پر کنید !")
-    }
-    if (!this.AuthValidationService.isEmail(this.RegisterInput.email)){
+    } else if (!this.AuthValidationService.isEmail(this.RegisterInput.email)){
       alert("لطفا ایمیل درست وارد کنید !")
-    }
-    if (!this.AuthValidationService.isRePassword(this.RegisterInput.re_password , this.RegisterInput.password)){
+    } else if (!this.AuthValidationService.isRePassword(this.RegisterInput.re_password , this.RegisterInput.password)){
       alert("لطفا رمز کاربری و تکرار رمز کاربری را چک کنید !")
+    } else {
+      this.ServiceAuthService.changeActive()
+      localStorage.setItem("auth" , JSON.stringify(this.RegisterInput))
+      this.router.navigate(['/'])
     }
-    //
   }
 
 
