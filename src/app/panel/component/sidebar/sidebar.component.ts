@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {SidebarMenu} from '../../../interface/sidebar-menu'
 
 @Component({
   selector: 'app-sidebar',
@@ -11,5 +12,20 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  SidebarMenu:SidebarMenu[] = [
+    {
+      text : 'داشبورد',
+      icon : 'fa-house-blank',
+      link : "/"
+    },
+    {
+      text : 'وبلاگ',
+      icon : 'fa-sparkles',
+      link : "/blog"
+    },
+
+  ]
+
 
 }
