@@ -21,6 +21,7 @@ export class AddComponent implements OnInit {
     title : "" ,
     description : "" ,
     date : new Date().toLocaleDateString('fa-IR') ,
+    view : Math.floor(Math.random() * 100) + 1,
   }
   clickAdd(){
     if (!this.AuthValidationService.isEmpty(this.addBlog.title) ||
