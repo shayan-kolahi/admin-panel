@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthValidationService} from '../../../services/auth-validation.service'
+import {ValidationService} from '../../../services/validation.service'
 import {LogInInput} from '../../../interface/log-in-input'
 import {RegisterInput} from '../../../interface/register-input'
 import { Router } from '@angular/router';
@@ -10,7 +10,7 @@ import {ServiceAuthService} from "../../../services/service-auth.service";
 })
 export class AuthComponent implements OnInit {
 
-  constructor(private AuthValidationService:AuthValidationService,
+  constructor(private AuthValidationService:ValidationService,
               private router: Router,
               private ServiceAuthService:ServiceAuthService) { }
 

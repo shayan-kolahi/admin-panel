@@ -7,6 +7,7 @@ import { EditComponent } from './component/edit/edit.component';
 import { ViewComponent } from './component/view/view.component';
 import { AddComponent } from './component/add/add.component';
 import { ListComponent } from './component/list/list.component';
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { ListComponent } from './component/list/list.component';
     CommonModule,
     BlogRoutingModule,
     HttpClientModule,
+    FormsModule,
   ]
 })
 export class BlogModule { }
