@@ -18,7 +18,8 @@
         <textarea [(ngModel)]="addBlog.description" placeholder="..." class="text-base input input-bordered input-gray w-full p-3"></textarea>
     </div>
     <div class="col-12 flex justify-center mt-4">
-      <button (click)="clickAdd()" class="btn btn-primary">ثبت</button>
+      <button *ngIf="!this.isRoute" (click)="clickAdd()" class="btn btn-primary">ثبت</button>
+      <button *ngIf="this.isRoute" (click)="clickEdit()" class="btn btn-secondary">ثبت</button>
     </div>
   </section>
 

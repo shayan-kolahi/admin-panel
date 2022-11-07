@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {AddComponent} from "./component/add/add.component";
+import {AddAndEditComponent} from "./component/addAndEdit/addAndEdit.component";
 import {ListComponent} from "./component/list/list.component";
 
 const routes: Routes = [
   {path : '' , component : ListComponent},
-  {path : 'add' , component : AddComponent},
+  {path : 'add' , component : AddAndEditComponent},
+  {path : 'edit/:id' , component : AddAndEditComponent},
 
 ];
 
