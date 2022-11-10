@@ -15,8 +15,9 @@
           <th>تایتل</th>
           <th>تاریخ</th>
           <th>بازدید</th>
-          <th>ویرایش</th>
-          <th>حذف</th>
+          <th></th>
+          <th></th>
+          <th></th>
         </tr>
         </thead>
         <tbody>
@@ -26,6 +27,7 @@
           <td>{{item.date}}</td>
           <td><div class="badge badge-ghost">{{item.view}}</div></td>
           <td><button [routerLink]="['edit/' , item.id]" class="btn btn-accent text-1xl far fa-edit"></button></td>
+          <td><button [routerLink]="['view/' , item.id]" class="btn btn-primary text-1xl far fa-eye"></button></td>
           <td><button class="btn btn-secondary text-1xl far fa-trash-alt"></button></td>
         </tr>
         </tbody>

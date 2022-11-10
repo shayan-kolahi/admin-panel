@@ -13,11 +13,6 @@ export class ListComponent implements OnInit {
   infoBlog:any;
   ngOnInit(): void {
     this.infoBlog = JSON.parse(<any>localStorage.getItem("blog"))
-    if (this.infoBlog !== null){
-      this.isEmpty = false;
-      console.log(this.infoBlog)
-    }else {
-      this.isEmpty = true;
-    }
+    this.isEmpty = this.infoBlog === null;
   }
 }
