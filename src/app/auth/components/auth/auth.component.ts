@@ -5,7 +5,6 @@ import {RegisterInput} from '../../../interface/register-input'
 import { Router } from '@angular/router';
 import {ServiceAuthService} from "../../../services/service-auth.service";
 import {LogInApiService} from "../../../services/log-in-api.service";
-import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
 import {CookieService} from "ngx-cookie-service";
 @Component({
@@ -17,7 +16,6 @@ export class AuthComponent implements OnInit {
   constructor(private AuthValidationService:ValidationService,
               private router: Router,
               private ServiceAuthService:ServiceAuthService,
-              private http: HttpClient,
               private LogInApiService: LogInApiService,
               private cookieService: CookieService,
               ) { }
@@ -71,7 +69,6 @@ export class AuthComponent implements OnInit {
       this.loading = true;
       this.LogInApiService.login_api(this.LogInInput).subscribe({
         next: data => {
-          this.LogInApiService.infos(data)
           this.cookieService.set('token', data.data.token);
           this.router.navigate(['/'])
           this.ServiceAuthService.changeActive()

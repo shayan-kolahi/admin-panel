@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-list',
@@ -20,9 +20,4 @@ export class ListComponent implements OnInit {
       this.isEmpty = true;
     }
   }
-
-
-
-
-
 }

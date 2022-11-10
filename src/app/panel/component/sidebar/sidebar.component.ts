@@ -24,6 +24,11 @@ export class SidebarComponent implements OnInit {
       icon : 'fa-sparkles',
       link : "/blog"
     },
+    {
+      text : 'مقالات مفید',
+      icon : 'fa-sparkles',
+      link : "/articles"
+    },
 
   ]
 

@@ -13,10 +13,5 @@ export class LogInApiService {
     return this.http.post<any>('http://g-api.gmodern.ir/api/login', body)
   }
 
-  infos:any;
-  getInfo(LogInApiServiceInfo:any){
-    this.infos = LogInApiServiceInfo
-  }
-
 
 }
