@@ -993,3 +993,44 @@ body{
 .title_font{
   font-family: 'Mikhak' , sans-serif !important;
 }
+
+
+
+.swal2-styled.swal2-confirm{
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  background: transparent !important;
+  color: #ddd !important;
+  transition: all .3s;
+  padding: 0 !important;
+  margin: 0 !important;
+  margin-left: auto !important;
+
+}
+.swal2-icon.swal2-error.swal2-icon-show{
+  margin: 0;
+}
+.swal2-styled.swal2-confirm:hover{
+  background: transparent !important;
+  color: #aaa !important;
+}
+.swal2-container.swal2-top-end>.swal2-popup{
+}
+.swal2-popup.swal2-toast .swal2-title{
+  margin-bottom: 0 !important;
+  font-family: 'Mikhak';
+
+}
+.swal2-popup.swal2-toast .swal2-actions{
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0 !important;
+}
+.swal2-popup.swal2-toast .swal2-html-container{
+  margin-top: 0 !important;
+}
+
+

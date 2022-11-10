@@ -4,6 +4,10 @@ import {LogInInput} from '../../../interface/log-in-input'
 import {RegisterInput} from '../../../interface/register-input'
 import { Router } from '@angular/router';
 import {ServiceAuthService} from "../../../services/service-auth.service";
+import {LogInApiService} from "../../../services/log-in-api.service";
+import { HttpClient } from '@angular/common/http';
+import Swal from 'sweetalert2';
+import {CookieService} from "ngx-cookie-service";
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
@@ -12,7 +16,11 @@ export class AuthComponent implements OnInit {
 
   constructor(private AuthValidationService:ValidationService,
               private router: Router,
-              private ServiceAuthService:ServiceAuthService) { }
+              private ServiceAuthService:ServiceAuthService,
+              private http: HttpClient,
+              private LogInApiService: LogInApiService,
+              private cookieService: CookieService,
+              ) { }
 
   ngOnInit(): void {}
 
@@ -21,6 +29,7 @@ export class AuthComponent implements OnInit {
     eye2 : false,
     eye3 : false,
   }
+  loading:boolean= false;
 
   isActive:boolean = true;
   changeAuth(){this.isActive = !this.isActive}
@@ -33,15 +42,51 @@ export class AuthComponent implements OnInit {
     password : "" ,
   }
   logInValidationAuth(){
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: true,
+      confirmButtonText:'<i class="far fa-times"></i>',
+      timer: 5000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    })
     if (!this.AuthValidationService.isEmpty(this.LogInInput.email) ||
       !this.AuthValidationService.isEmpty(this.LogInInput.password)){
-      alert("فیلد ها را پر کنید !")
+      Toast.fire({
+        icon: 'error',
+        title: 'خطا',
+        text: 'فیلد ها را پر کنید',
+      })
     } else if (!this.AuthValidationService.isEmail(this.LogInInput.email)){
-      alert("لطفا ایمیل درست وارد کنید !")
+      Toast.fire({
+        icon: 'error',
+        title: 'خطا',
+        text: 'لطفا ایمیل درست وارد کنید !',
+      })
     } else {
-      this.ServiceAuthService.changeActive()
-      localStorage.setItem("auth" , JSON.stringify(this.LogInInput))
-      this.router.navigate(['/'])
+      this.loading = true;
+      this.LogInApiService.login_api(this.LogInInput).subscribe({
+        next: data => {
+          this.LogInApiService.infos(data)
+          this.cookieService.set('token', data.data.token);
+          this.router.navigate(['/'])
+          this.ServiceAuthService.changeActive()
+        },
+        error: error => {
+          console.log(error.error);
+          Toast.fire({
+            icon: 'error',
+            title: 'خطا',
+            text: error.error.message,
+          })
+          this.loading = false;
+        },
+      })
+
     }
   }
 
