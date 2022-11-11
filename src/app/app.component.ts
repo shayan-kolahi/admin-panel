@@ -10,10 +10,6 @@ export class AppComponent implements OnInit {
               private cookieService: CookieService,) { }
 
   ngOnInit(): void {
-    if (this.cookieService.get('token') !== "") {
-      this.router.navigate(['/'])
-    }else {
-      this.router.navigate(['/auth'])
-    }
+
   }
 }

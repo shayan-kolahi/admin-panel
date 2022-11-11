@@ -44,7 +44,7 @@ export class AddAndEditComponent implements OnInit {
       !this.AuthValidationService.isEmpty(this.addBlog.description)){
       alert("فیلد ها را پر کنید !")
     } else {
-      if (this.localGetItem && Array.isArray(this.localGetItem)){
+      if (this.localGetItem && Array.isArray(this.localGetItem) && this.localGetItem !== [""] ){
         this.addBlog.id = this.localGetItem[0].id + 1
         this.localGetItem.unshift(this.addBlog)
         localStorage.setItem("blog" , JSON.stringify(this.localGetItem))

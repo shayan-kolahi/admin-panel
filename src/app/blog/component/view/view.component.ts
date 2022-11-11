@@ -11,7 +11,10 @@ export class ViewComponent implements OnInit {
   blogId:any
   localGetItem:any = JSON.parse(<any>localStorage.getItem("blog"))
   localItem:any;
-  constructor(private AuthValidationService:ValidationService,private router: Router,private getId: ActivatedRoute,) {
+  constructor(private AuthValidationService:ValidationService,
+              private router: Router,
+              private getId: ActivatedRoute,
+              ) {
     getId.params.subscribe((params) => {
       this.blogId = params["id"]
     })
@@ -19,6 +22,12 @@ export class ViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.localItem  = this.localGetItem.filter((id:any) => id.id == this.blogId)
+  }
+
+  clickDelete(idBlog:any){
+    JSON.parse(<any>localStorage.getItem("blog")).splice(idBlog , 1)
+    localStorage.setItem("blog" , JSON.stringify(this.localGetItem))
+    this.router.navigate(["/blog"])
   }
 
 }

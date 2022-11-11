@@ -3,7 +3,6 @@ import {ValidationService} from '../../../services/validation.service'
 import {LogInInput} from '../../../interface/log-in-input'
 import {RegisterInput} from '../../../interface/register-input'
 import { Router } from '@angular/router';
-import {ServiceAuthService} from "../../../services/service-auth.service";
 import {LogInApiService} from "../../../services/log-in-api.service";
 import Swal from 'sweetalert2';
 import {CookieService} from "ngx-cookie-service";
@@ -15,7 +14,6 @@ export class AuthComponent implements OnInit {
 
   constructor(private AuthValidationService:ValidationService,
               private router: Router,
-              private ServiceAuthService:ServiceAuthService,
               private LogInApiService: LogInApiService,
               private cookieService: CookieService,
               ) { }
@@ -71,7 +69,6 @@ export class AuthComponent implements OnInit {
         next: data => {
           this.cookieService.set('token', data.data.token);
           this.router.navigate(['/'])
-          this.ServiceAuthService.changeActive()
         },
         error: error => {
           console.log(error.error);
@@ -107,7 +104,6 @@ export class AuthComponent implements OnInit {
     } else if (!this.AuthValidationService.isRePassword(this.RegisterInput.re_password , this.RegisterInput.password)){
       alert("لطفا رمز کاربری و تکرار رمز کاربری را چک کنید !")
     } else {
-      this.ServiceAuthService.changeActive()
       localStorage.setItem("auth" , JSON.stringify(this.RegisterInput))
       this.router.navigate(['/'])
     }
