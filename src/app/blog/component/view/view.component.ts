@@ -10,7 +10,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class ViewComponent implements OnInit {
   blogId:any
   localGetItem:any = JSON.parse(<any>localStorage.getItem("blog"))
-
+  localItem:any;
   constructor(private AuthValidationService:ValidationService,private router: Router,private getId: ActivatedRoute,) {
     getId.params.subscribe((params) => {
       this.blogId = params["id"]
@@ -18,7 +18,7 @@ export class ViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.localGetItem.filter((id:any) => id.id == this.blogId))
+    this.localItem  = this.localGetItem.filter((id:any) => id.id == this.blogId)
   }
 
 }
