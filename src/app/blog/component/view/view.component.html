@@ -8,9 +8,9 @@
 
   <div class="flex justify-between items-center my-5">
     <h3 class="font-normal text-2xl leading-6 text-gray-600 m-0 p-0 title_font"> دیده شده : {{ localItem[0].view }}</h3>
-    <div>
-      <td><button [routerLink]="['/blog/edit/' , localItem[0].id ]" class="btn btn-accent text-1xl far fa-edit ml-3"></button></td>
-      <td><button (click)="clickDelete(localItem[0].id)" class="btn btn-secondary text-1xl far fa-trash-alt"></button></td>
+    <div class="flex">
+      <app-btn-edit [routerLink]="['/blog/edit/' , localItem[0].id ]" class="ml-3"></app-btn-edit>
+      <app-btn-delete (click)="clickDelete(localItem[0].id)"></app-btn-delete>
     </div>
   </div>
 

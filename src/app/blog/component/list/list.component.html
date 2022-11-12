@@ -26,9 +26,13 @@
           <td>{{item.title}}</td>
           <td>{{item.date}}</td>
           <td><div class="badge badge-ghost">{{item.view}}</div></td>
-          <td><button [routerLink]="['edit/' , item.id]" class="btn btn-accent text-1xl far fa-edit"></button></td>
-          <td><button [routerLink]="['view/' , item.id]" class="btn btn-primary text-1xl far fa-eye"></button></td>
-          <td><button (click)="clickDelete(i)" class="btn btn-secondary text-1xl far fa-trash-alt"></button></td>
+          <td><app-btn-edit [routerLink]="['edit/' , item.id]"></app-btn-edit></td>
+          <td>
+            <div class="tooltip" data-tip="جزییات وبلاگ">
+              <button [routerLink]="['view/' , item.id]" class="btn btn-primary text-1xl far fa-eye"></button>
+            </div>
+          </td>
+          <td><app-btn-delete (click)="clickDelete(i)"></app-btn-delete></td>
         </tr>
         </tbody>
       </table>
