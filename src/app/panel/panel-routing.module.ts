@@ -6,6 +6,7 @@ const routes: Routes = [
   {path: "", component : PanelComponent , children : [
       {path: "blog", loadChildren: () => import('../blog/blog.module').then(m => m.BlogModule)},
       {path: "articles", loadChildren: () => import('../articles/articles.module').then(m => m.ArticlesModule)},
+      {path: "currency", loadChildren: () => import('../currency/currency.module').then(m => m.CurrencyModule)},
   ]},
 
 ];

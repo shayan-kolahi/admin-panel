@@ -20,6 +20,11 @@ export class SidebarComponent implements OnInit {
       link : "/"
     },
     {
+      text : 'کریپتو کارنسی',
+      icon : 'fa-coins',
+      link : "/currency"
+    },
+    {
       text : 'وبلاگ',
       icon : 'fa-sparkles',
       link : "/blog"
