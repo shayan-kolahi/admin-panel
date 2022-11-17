@@ -1,48 +1,53 @@
-<section class="p-5">
+<section class="p-5 relative">
   <div class="header py-5">
     <div class="flex justify-between items-center	">
       <h2 class="font-normal text-2xl leading-6 text-gray-600 m-0 p-0 title_font">لیست کریپتو کارنسی</h2>
     </div>
   </div>
 
-  <div *ngFor="let item of currency; let i = index">
-    <div *ngIf="i < 5">
-      5 تا از بهترین ها
-    </div>
+  <div *ngIf="isLoader">
+    <app-loader></app-loader>
   </div>
-  <div class="overflow-x-auto w-full">
-    <table class="table w-full text-right">
-      <thead>
-      <tr>
-        <th>ارز</th>
-        <th>قیمت فعلی</th>
-        <th>به روز رسانی</th>
-      </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of currency">
-        <td>
-          <div class="flex items-center space-x-3">
-            <div class="avatar relative	">
-              <div class="mask mask-squircle w-12 h-12">
-                <img src="{{item.image}}" alt="{{item.name}}" />
+  <div *ngIf="!isLoader">
+      <div *ngFor="let item of currency; let i = index">
+        <div *ngIf="i < 5">
+          5 تا از بهترین ها
+        </div>
+      </div>
+      <div class="overflow-x-auto w-full">
+        <table class="table w-full text-right">
+          <thead>
+          <tr>
+            <th>ارز</th>
+            <th>قیمت فعلی</th>
+            <th>به روز رسانی</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let item of currency">
+            <td>
+              <div class="flex items-center space-x-3">
+                <div class="avatar relative	">
+                  <div class="mask mask-squircle w-12 h-12">
+                    <img src="{{item.image}}" alt="{{item.name}}" />
+                  </div>
+                  <span class="absolute bottom-0	right-0	 bg-lime-600	text-white rounded-full	w-5  h-5  justify-center	 items-center	 flex">{{item.market_cap_rank}}</span>
+                </div>
+                <div class="m-0 pr-4 text-right">
+                  <div class="font-bold">{{item.symbol}}</div>
+                  <div class="text-sm opacity-50">{{item.name}}</div>
+                </div>
               </div>
-              <span class="absolute bottom-0	right-0	 bg-lime-600	text-white rounded-full	w-5  h-5  justify-center	 items-center	 flex">{{item.market_cap_rank}}</span>
-            </div>
-            <div class="m-0 pr-4 text-right">
-              <div class="font-bold">{{item.symbol}}</div>
-              <div class="text-sm opacity-50">{{item.name}}</div>
-            </div>
-          </div>
-        </td>
-        <td>
-          {{item.current_price}}  دلار
-        </td>
-        <td>
-          {{item.last_updated}}
-        </td>
-      </tr>
-      </tbody>
-    </table>
+            </td>
+            <td>
+              {{item.current_price}}  دلار
+            </td>
+            <td>
+              {{item.last_updated}}
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
   </div>
 </section>
