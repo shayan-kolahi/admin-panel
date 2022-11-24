@@ -1,0 +1,19 @@
+<section class="grid grid-cols-4 gap-2 py-10">
+  <div class="card bg-base-100 shadow-xl" *ngFor="let item of currency.slice(0, 4); let i = index">
+    <div class="card-body">
+      <div class="avatar relative	">
+        <div class="mask mask-squircle w-12 h-12">
+          <img src="{{item.image}}" alt="{{item.name}}" />
+        </div>
+        <span class="absolute bottom-0	right-0	 bg-lime-600	text-white rounded-full	w-5  h-5  justify-center	 items-center	 flex">{{item.market_cap_rank}}</span>
+      </div>
+      <div class="flex items-end">
+        <h2 class="m-0">{{item.name}}</h2>
+        <div class="font-bold mr-3 mb-1">{{item.symbol}}</div>
+      </div>
+      <div class="alert alert-info text-white flex justify-center	 shadow-lg">
+        {{item.current_price}}
+      </div>
+    </div>
+  </div>
+</section>

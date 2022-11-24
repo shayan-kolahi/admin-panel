@@ -2,20 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import {CurrencyService} from "../../../services/currency.service";
 
 @Component({
-  selector: 'app-currency',
-  templateUrl: './currency.component.html',
-  styleUrls: ['./currency.component.scss']
+  selector: 'app-best',
+  templateUrl: './best.component.html',
+  styleUrls: ['./best.component.scss']
 })
-export class CurrencyComponent implements OnInit {
+export class BestComponent implements OnInit {
 
   constructor(private CurrencyService:CurrencyService) { }
 
   currency:any;
-  isLoader:boolean = true
   ngOnInit(): void {
     this.CurrencyService.currencyApi().subscribe({
       next: data => {
-        this.isLoader = false;
         this.currency = data
       }
     })
