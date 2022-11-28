@@ -10,7 +10,10 @@ export class CurrencyService {
   constructor(private http: HttpClient,) { }
 
   currencyApi() : Observable<any>{
-    return this.http.get<any>("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd")
+    return this.http.get<any>("https://api.coinpaprika.com/v1/coins")
+  }
+  currencyApiDetails(coin:string) : Observable<any>{
+    return this.http.get<any>(`https://api.coinpaprika.com/v1/coins/${coin}`)
   }
 
 }

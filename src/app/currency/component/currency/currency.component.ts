@@ -19,6 +19,7 @@ export class CurrencyComponent implements OnInit {
         this.currency = data
       }
     })
+
   }
 
 }

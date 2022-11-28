@@ -1,0 +1,62 @@
+<section class="p-5">
+  <div class="header pb-3">
+    <div class="flex justify-between items-center	">
+      <h2 class="font-normal text-2xl leading-6 text-gray-600 m-0 p-0 title_font">لیست همه وبلاگ ها</h2>
+      <button routerLink="/currency" class="btn btn-primary">همه کریپتو کارنسی ها</button>
+    </div>
+  </div>
+  <div *ngIf="isLoader">
+    <app-loader></app-loader>
+  </div>
+  <div class="card card-body card-compact bg-base-100 shadow-xl" *ngIf="!isLoader">
+    <div class="w-1/2 text-center mx-auto">
+      <div class="indicator">
+        <img class="w-24 h-24 rounded-full mx-auto mb-5" src="{{data.logo}}" alt="">
+        <div class="tooltip" data-tip="رتبه">
+          <span class="indicator-item indicator-top indicator-end badge badge-primary">{{data.rank}}</span>
+        </div>
+      </div>
+      <h2 class="font-normal text-2xl leading-6 text-gray-600 m-0 p-0 title_font text-center">{{data.name}}</h2>
+      <span class="font-normal text-1xl leading-6 text-gray-600 m-0 p-0 title_font text-center">{{data.symbol}}</span>
+      <p class="font-normal mb-2 text-1xl leading-6 text-gray-400 p-0">{{data.description}}</p>
+    </div>
+    <div class="grid grid grid-cols-4 gap-4">
+      <div class="stats border shadow">
+        <div class="stat">
+          <div class="stat-title">وضعیت توسعه</div>
+          <div class="stat-value text-2xl text-gray-500 mt-5">{{data.development_status}}</div>
+        </div>
+      </div>
+      <div class="stats border shadow">
+        <div class="stat">
+          <div class="stat-title">داده های اول در</div>
+          <div class="stat-value text-2xl text-gray-500 mt-5">{{data.first_data_at | date}}</div>
+        </div>
+      </div>
+      <div class="stats border shadow">
+        <div class="stat">
+          <div class="stat-title">شروع</div>
+          <div class="stat-value text-2xl text-gray-500 mt-5">{{data.started_at | date}}</div>
+        </div>
+      </div>
+      <div class="stats border shadow">
+        <div class="stat">
+          <div class="stat-title">نوع</div>
+          <div class="stat-value text-2xl text-gray-500 mt-5">{{data.type}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-10">
+      <h2 class="font-normal text-2xl leading-6 text-gray-600 m-0 p-0 title_font text-center"> لینک های اصلیه {{ data.name }}</h2>
+      <div class="grid grid grid-cols-6 gap-4 mt-5">
+        <a *ngFor="let link of data.links_extended" target="_blank" href="{{link.url}}" class="btn btn-sm btn-primary">{{link.type}}</a>
+      </div>
+    </div>
+    <div class="mt-10">
+      <h2 class="font-normal text-2xl leading-6 text-gray-600 m-0 p-0 title_font text-center"> شبکه های اجتماعی {{ data.name }}</h2>
+      <div class="grid grid grid-cols-5 gap-4 mt-5">
+        <a *ngFor="let link of links" target="_blank" href="{{link[1]}}" class="btn btn-sm btn-primary">{{link[0]}}</a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -5,7 +5,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {InterceptorService} from "./services/interceptor.service";
+// import {InterceptorService} from "./services/interceptor.service";
 
 @NgModule({
   declarations: [
@@ -19,7 +19,7 @@ import {InterceptorService} from "./services/interceptor.service";
   ],
   providers: [
     CookieService,
-    { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }
+    // { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }
   ],
   bootstrap: [AppComponent]
 })

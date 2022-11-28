@@ -1,4 +1,4 @@
-<section class="p-5 relative">
+<section class="p-5">
   <div class="header py-5">
     <div class="flex justify-between items-center	">
       <h2 class="font-normal text-2xl leading-6 text-gray-600 m-0 p-0 title_font">لیست کریپتو کارنسی</h2>
@@ -9,41 +9,39 @@
     <app-loader></app-loader>
   </div>
   <div *ngIf="!isLoader">
-      <app-best></app-best>
       <div class="overflow-x-auto w-full">
-        <table class="table w-full text-right">
-          <thead>
-          <tr>
-            <th>ارز</th>
-            <th>قیمت فعلی</th>
-            <th>به روز رسانی</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor="let item of currency">
-            <td>
-              <div class="flex items-center space-x-3">
-                <div class="avatar relative	">
-                  <div class="mask mask-squircle w-12 h-12">
-                    <img src="{{item.image}}" alt="{{item.name}}" />
-                  </div>
-                  <span class="absolute bottom-0	right-0	 bg-lime-600	text-white rounded-full	w-5  h-5  justify-center	 items-center	 flex">{{item.market_cap_rank}}</span>
-                </div>
-                <div class="m-0 pr-4 text-right">
-                  <div class="font-bold">{{item.symbol}}</div>
-                  <div class="text-sm opacity-50">{{item.name}}</div>
-                </div>
-              </div>
-            </td>
-            <td>
-              {{item.current_price}}  دلار
-            </td>
-            <td>
-              {{item.last_updated | date:"MM/dd/yy"}}
-            </td>
-          </tr>
-          </tbody>
-        </table>
+
+
+        <cdk-virtual-scroll-viewport itemSize="50" class="h-screen w-full virtualMain">
+          <table class="table table-zebra w-full text-right">
+            <thead>
+            <tr class="h-20">
+              <th></th>
+              <th>نام</th>
+              <th>تایپ</th>
+              <th>نماد</th>
+              <th>رتبه</th>
+              <th>ای دی</th>
+              <th>فعال</th>
+              <th>جدید</th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *cdkVirtualFor="let item of currency;let i = index" class="h-20">
+              <th>{{i + 1}}</th>
+              <td> {{item.name}}</td>
+              <td> {{item.type}}</td>
+              <td> {{item.symbol}}</td>
+              <td> {{item.rank}}</td>
+              <td> {{item.id}}</td>
+              <td> {{item.is_active}}</td>
+              <td> {{item.is_new}}</td>
+              <td><button [routerLink]="['details/' , item.id]" class="btn btn-link">بیشتر</button></td>
+            </tr>
+            </tbody>
+          </table>
+        </cdk-virtual-scroll-viewport>
       </div>
   </div>
 </section>
