@@ -25,6 +25,11 @@ export class SidebarComponent implements OnInit {
       link : "/currency"
     },
     {
+      text : 'آب و هوا',
+      icon : 'fa-sun-cloud',
+      link : "/weather"
+    },
+    {
       text : 'وبلاگ',
       icon : 'fa-sparkles',
       link : "/blog"

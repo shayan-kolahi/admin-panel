@@ -1,0 +1,58 @@
+<section class="weather bg-sky-600 min-h-screen p-5 flex justify-center justify-center">
+  <div *ngIf="isLoader">
+    :)
+  </div>
+  <div *ngIf="!isLoader" class="w-96 m-auto">
+    <div class="card bg-base-100 shadow-xl mb-5">
+      <div class="card-body">
+
+        <form class="flex items-center ltr">
+          <button (click)="formSearch()" type="submit" class="p-2.5 mr-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 far fa-search"></button>
+          <div class="relative w-full">
+            <input [(ngModel)]="searchInput" name="search" type="text" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="جستوجو شهر ..." required>
+          </div>
+        </form>
+
+      </div>
+    </div>
+    <div class="card bg-base-100 shadow-xl">
+      <div class="card-body">
+        <div class="flex justify-center flex-col border-b mb-4">
+          <h2 class="card-title text-center flex justify-center justify-center flex-col">{{weatherInfo.location.city}}</h2>
+          <div class="flex justify-between items-center mb-4">
+            <span> منطقه : {{weatherInfo.location.region}} </span>
+            <span> کشور : {{weatherInfo.location.country}} </span>
+          </div>
+        </div>
+        <div class="">
+          <cdk-accordion class="example-accordion">
+            <cdk-accordion-item
+              *ngFor="let item of weatherInfo.current_observation | keyvalue; let index = index;"
+              #accordionItem="cdkAccordionItem"
+              class="example-accordion-item"
+              role="button"
+              tabindex="0"
+              [attr.id]="'accordion-header-' + index"
+              [attr.aria-expanded]="accordionItem.expanded"
+              [attr.aria-controls]="'accordion-body-' + index">
+              <div class="example-accordion-item-header" (click)="accordionItem.toggle()">
+                {{ item.key }}
+              </div>
+              <div
+                class="example-accordion-item-body"
+                role="region"
+                [style.display]="accordionItem.expanded ? '' : 'none'"
+                [attr.id]="'accordion-body-' + index"
+                [attr.aria-labelledby]="'accordion-header-' + index">
+                {{ item.value | json }}
+              </div>
+            </cdk-accordion-item>
+          </cdk-accordion>
+        </div>
+        <div class="card-actions justify-end">
+          <button class="btn btn-primary">Buy Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
