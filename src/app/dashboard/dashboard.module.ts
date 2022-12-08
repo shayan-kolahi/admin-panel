@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { BlogRoutingModule } from './blog-routing.module';
+import { DashboardRoutingModule } from 'src/app/dashboard/dashboard-routing.module';
 import { ViewComponent } from './component/view/view.component';
 import { AddAndEditComponent } from './component/addAndEdit/addAndEdit.component';
 import { ListComponent } from './component/list/list.component';
 import {FormsModule} from "@angular/forms";
 import { BtnDeleteComponent } from './component/btn-delete/btn-delete.component';
 import { BtnEditComponent } from './component/btn-edit/btn-edit.component';
-import {LoaderModule} from "src/app/loader/loader.module";
 
 
 @NgModule({
@@ -21,9 +20,8 @@ import {LoaderModule} from "src/app/loader/loader.module";
   ],
   imports: [
     CommonModule,
-    BlogRoutingModule,
+    DashboardRoutingModule,
     FormsModule,
-    LoaderModule
   ]
 })
-export class BlogModule { }
+export class DashboardModule { }

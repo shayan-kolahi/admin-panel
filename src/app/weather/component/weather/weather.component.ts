@@ -12,7 +12,9 @@ export class WeatherComponent implements OnInit {
 
   searchInput:string = "landon";
   weatherInfo:any;
-  isLoader:boolean = true
+  isLoader:boolean = true;
+  current_observation:any;
+  items:any[]=[];
   ngOnInit(): void {
     this.WeatherApi()
   }
@@ -23,11 +25,21 @@ export class WeatherComponent implements OnInit {
 
 
   WeatherApi(){
-    console.log("asd")
     this.WeatherService.weatherApi(this.searchInput).subscribe({
       next: data => {
         this.isLoader = false;
-        console.log(this.weatherInfo = data)
+        this.weatherInfo = data;
+        this.current_observation=data.current_observation;
+
+        for(let i=0;i< Object.keys(this.current_observation).length;i++){
+          this.items.push(
+            {
+              name:Object.keys(this.current_observation)[i],
+              value:Object.values(this.current_observation)[i]
+            }
+          )
+        }
+        console.log(data.current_observation,this.items)
       },
       error: err => {
         alert("مشکلی پیش اومده :(")

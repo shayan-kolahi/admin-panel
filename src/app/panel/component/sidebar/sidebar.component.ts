@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {SidebarMenu} from '../../../interface/sidebar-menu'
+import {IsActiveMatchOptions} from "@angular/router";
 
 @Component({
   selector: 'app-sidebar',
@@ -12,12 +13,18 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  options:IsActiveMatchOptions={
+    matrixParams:'subset',
+    queryParams:'ignored',
+    fragment:'ignored',
+    paths:'subset'
+  }
 
   SidebarMenu:SidebarMenu[] = [
     {
       text : 'داشبورد',
       icon : 'fa-house-blank',
-      link : "/"
+      link : "/dashboard"
     },
     {
       text : 'کریپتو کارنسی',
