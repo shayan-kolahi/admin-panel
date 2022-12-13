@@ -10,11 +10,9 @@ export class WeatherComponent implements OnInit {
 
   constructor(private WeatherService:WeatherService) { }
 
-  searchInput:string = "landon";
+  searchInput:string = "tehran";
   weatherInfo:any;
   isLoader:boolean = true;
-  current_observation:any;
-  items:any[]=[];
   ngOnInit(): void {
     this.WeatherApi()
   }
@@ -29,20 +27,12 @@ export class WeatherComponent implements OnInit {
       next: data => {
         this.isLoader = false;
         this.weatherInfo = data;
-        this.current_observation=data.current_observation;
+        this.weatherInfo.name = this.searchInput
+        console.log(this.weatherInfo)
 
-        for(let i=0;i< Object.keys(this.current_observation).length;i++){
-          this.items.push(
-            {
-              name:Object.keys(this.current_observation)[i],
-              value:Object.values(this.current_observation)[i]
-            }
-          )
-        }
-        console.log(data.current_observation,this.items)
       },
       error: err => {
-        alert("مشکلی پیش اومده :(")
+        window.location.reload();
       }
     })
     this.isLoader = true;

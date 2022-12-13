@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { WeatherRoutingModule } from './weather-routing.module';
 import { WeatherComponent } from './component/weather/weather.component';
 import {FormsModule} from "@angular/forms";
-import {CdkAccordionModule} from '@angular/cdk/accordion';
+import {LoaderModule} from "src/app/loader/loader.module";
 
 @NgModule({
   declarations: [
@@ -12,9 +12,9 @@ import {CdkAccordionModule} from '@angular/cdk/accordion';
   ],
   imports: [
     CommonModule,
-    CdkAccordionModule,
     WeatherRoutingModule,
-    FormsModule
+    FormsModule,
+    LoaderModule,
   ]
 })
 export class WeatherModule { }

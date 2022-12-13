@@ -54,6 +54,9 @@ $admin-panel-theme: mat.define-light-theme((
   url("assets/fonts/iransansdn/IRANSansDNFaNum.woff")
 }
 
+html {
+  scroll-behavior: smooth;
+}
 body:not(.fa,.fa-brands,.fa-duotone,.fa-light,.fa-regular,.fa-solid,.fa-thin,.fab,.fad,.fal,.far,.fas,.fat,.title_font) *{ font-family: iransans , sans-serif ; direction: rtl}
 body{
   background: #f5f5f5;

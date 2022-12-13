@@ -8,7 +8,6 @@ import { ListComponent } from './component/list/list.component';
 import {FormsModule} from "@angular/forms";
 import { BtnDeleteComponent } from './component/btn-delete/btn-delete.component';
 import { BtnEditComponent } from './component/btn-edit/btn-edit.component';
-import {LoaderModule} from "src/app/loader/loader.module";
 
 
 @NgModule({
@@ -23,7 +22,6 @@ import {LoaderModule} from "src/app/loader/loader.module";
     CommonModule,
     BlogRoutingModule,
     FormsModule,
-    LoaderModule
   ]
 })
 export class BlogModule { }
