@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {SidebarMenu} from '../../../interface/sidebar-menu'
-import {IsActiveMatchOptions} from "@angular/router";
+import {AppService} from "../../../services/app.service";
+import {AloostadService} from "../../../services/aloostad.service";
 
 @Component({
   selector: 'app-sidebar',
@@ -9,17 +10,20 @@ import {IsActiveMatchOptions} from "@angular/router";
 })
 export class SidebarComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private AloostadService:AloostadService,private AppService:AppService) { }
+  nameProfile?:string;
+  isActiveLoading:boolean = true
   ngOnInit(): void {
+    this.AloostadService.profile(this.AppService.TeacherId).subscribe({
+      next:data => {
+        this.nameProfile = data.FirstName + " " + data.LastName;
+        this.isActiveLoading = false
+      },
+      error:err => {
+        console.log(err)
+      },
+    })
   }
-  options:IsActiveMatchOptions={
-    matrixParams:'subset',
-    queryParams:'ignored',
-    fragment:'ignored',
-    paths:'subset'
-  }
-
   SidebarMenu:SidebarMenu[] = [
     {
       text : 'داشبورد',
@@ -46,7 +50,11 @@ export class SidebarComponent implements OnInit {
       icon : 'fa-sparkles',
       link : "/articles"
     },
-
+    {
+      text : 'الو استاد',
+      icon : 'fa-sparkles',
+      link : "/aloostad"
+    },
   ]
 
 

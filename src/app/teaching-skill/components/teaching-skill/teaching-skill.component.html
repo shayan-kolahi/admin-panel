@@ -1,0 +1,66 @@
+<section class="p-5">
+  <div class="header pb-3">
+    <div class="flex justify-between items-center	">
+      <h2 class="font-normal text-2xl leading-6 text-gray-600 m-0 p-0 title_font">دروس استاد</h2>
+      <button routerLink="/aloostad" class="btn btn-primary">پروفایل استاد</button>
+    </div>
+  </div>
+  <div *ngIf="isLoader">
+    <app-loader></app-loader>
+  </div>
+  <div class="card card-body card-compact bg-base-100 shadow-xl" *ngIf="!isLoader">
+    <div class="grid grid-cols-3 gap-4">
+      <div class="card bg-base-100 shadow-xl border" *ngFor="let item of data">
+        <div class="card-body">
+
+          <div class="indicator w-full flex flex-col justify-center items-center">
+            <i class="relative w-20 h-20 bg-blue-700 rounded-full mx-auto mb-5 fa-light fa-user-check flex justify-center items-center text-white text-2xl">
+              <div class="absolute bottom-0 right-0" *ngIf="item.IsValidByAdmin">
+                <div class="tooltip" data-tip="توسط ادمین معتبر است">
+                  <i class="fa-light text-base fa-check text-xl bg-green-700 w-[30px] h-[30px] flex justify-center items-center rounded-full"></i>
+                </div>
+              </div>
+            </i>
+          </div>
+          <h2 class="font-normal text-2xl leading-6 text-gray-600 m-0 p-0 title_font text-center">{{item.Teacherfirsname}} {{item.Teacherlastname}}</h2>
+          <span class="font-normal text-1xl leading-6 text-gray-600 m-0 p-0 title_font text-center">{{item.Department}}</span>
+          <span class="font-normal text-1xl leading-6 text-gray-600 m-0 p-0 title_font text-center">{{item.TeachName}}</span>
+
+
+          <div class="overflow-auto rounded-2xl border">
+            <table class="table w-full">
+              <tbody>
+              <tr>
+                <td class="text-right">دارای مدرک : </td>
+                <td class="text-left" *ngIf="!item.HasDegree">ندارد</td>
+                <td class="text-left" *ngIf="item.HasDegree">دارد</td>
+              </tr>
+              <tr class="active">
+                <td class="text-right">تاریخ ایجاد : </td>
+                <td class="text-left">{{item.DateCreate | date}}</td>
+              </tr>
+              <tr>
+                <td class="text-right">میزان مهارت : </td>
+                <td class="text-left">{{item.SkillAmount}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="alert alert-info rounded-2xl">
+            <div>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current flex-shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              <b>شهریه :{{item.strCooper}} {{item.Tuition}}</b>
+            </div>
+          </div>
+          <a [href]="['tel:'+item.Teachernumber]" class="btn btn-primary rounded-2xl">
+            <i class="fa-light fa-phone-alt font-medium text-xl ml-3"></i>
+            شماره استاد
+          </a>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

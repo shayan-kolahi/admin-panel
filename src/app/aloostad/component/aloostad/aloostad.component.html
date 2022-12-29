@@ -1,0 +1,56 @@
+<section class="p-5">
+  <div *ngIf="isLoader">
+    <app-loader></app-loader>
+  </div>
+  <div class="card card-body card-compact bg-base-100 shadow-xl" *ngIf="!isLoader">
+    <div class="w-1/2 text-center mx-auto">
+      <div class="indicator">
+        <i class="w-24 h-24 bg-blue-700 rounded-full mx-auto mb-5 fa-light fa-user-check flex justify-center items-center text-white text-3xl"></i>
+      </div>
+      <h2 class="font-normal text-2xl leading-6 text-gray-600 m-0 p-0 title_font text-center">{{data.FirstName + " " + data.LastName}}</h2>
+      <div class="flex items-center justify-center">
+        <a [href]="['tel:'+data.PhoneNumber]" class="btn btn-primary mx-2 my-4 text-xl fa-light fa-phone"></a>
+        <a [href]="['mailto:'+data.Mail]" class="btn btn-primary mx-2 my-4 text-xl fa-light fa-envelope"></a>
+      </div>
+    </div>
+    <div class="stats border shadow p-5">
+      <div class="grid grid-cols-3 gap-4">
+        <div class="stats border shadow">
+          <div class="stat flex items-center justify-between">
+            <div>
+              <div class="stat-title">ازدواج</div>
+              <div class="stat-value text-2xl text-gray-500 mt-5" *ngIf="data.MarriStatus == 0">مجرد</div>
+              <div class="stat-value text-2xl text-gray-500 mt-5" *ngIf="data.MarriStatus != 0">متاهل</div>
+            </div>
+            <i *ngIf="data.MarriStatus == 0" class="fa-light fa-user text-xl w-[50px] h-[50px] flex justify-center items-center rounded-full border"></i>
+            <i *ngIf="data.MarriStatus != 0" class="fa-light fa-user-friends text-xl w-[50px] h-[50px] flex justify-center items-center rounded-full border"></i>
+          </div>
+        </div>
+        <div class="stats border shadow">
+          <div class="stat flex items-center justify-between">
+            <div>
+              <div class="stat-title">تجربه</div>
+              <div class="stat-value text-2xl text-gray-500 mt-5">{{data.Experience}}%</div>
+            </div>
+            <span class="text-xl w-[50px] h-[50px] flex justify-center items-center rounded-full border">{{data.Experience}}%</span>
+          </div>
+        </div>
+        <div class="stats border shadow">
+          <div class="stat flex items-center justify-between">
+            <div>
+              <div class="stat-title">تولد</div>
+              <div class="stat-value text-2xl text-gray-500 mt-5">{{data.BirthDay | date}}</div>
+            </div>
+            <i class="fa-light fa-birthday-cake text-xl w-[50px] h-[50px] flex justify-center items-center rounded-full border"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stats border shadow p-5">
+      <div class="grid grid-cols-2 gap-2">
+        <button routerLink="TeachingSkill" class="btn btn-primary">دروس استاد</button>
+        <button routerLink="FreeTime" class="btn btn-primary">وقت آزاد استاد</button>
+      </div>
+    </div>
+    </div>
+</section>

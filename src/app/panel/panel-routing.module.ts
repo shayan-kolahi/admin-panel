@@ -17,6 +17,7 @@ const routes: Routes = [
       {path: "articles", loadChildren: () => import('../articles/articles.module').then(m => m.ArticlesModule)},
       {path: "currency", loadChildren: () => import('../currency/currency.module').then(m => m.CurrencyModule)},
       {path: "weather", loadChildren: () => import('../weather/weather.module').then(m => m.WeatherModule)},
+      {path: "aloostad", loadChildren: () => import('../aloostad/aloostad.module').then(m => m.AloostadModule)},
     ]
   },
 

@@ -1,4 +1,5 @@
 export interface LogInInput {
-  email:string,
-  password:string,
+  UserName: string,
+  Password: string,
+  Role: string
 }

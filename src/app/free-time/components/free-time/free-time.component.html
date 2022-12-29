@@ -1,0 +1,38 @@
+<section class="p-5">
+  <div class="header pb-3">
+    <div class="flex justify-between items-center	">
+      <h2 class="font-normal text-2xl leading-6 text-gray-600 m-0 p-0 title_font">وقت آزاد استاد</h2>
+      <button routerLink="/aloostad" class="btn btn-primary">پروفایل استاد</button>
+    </div>
+  </div>
+  <div *ngIf="isLoader">
+    <app-loader></app-loader>
+  </div>
+  <div class="card card-body card-compact bg-base-100 shadow-xl" *ngIf="!isLoader">
+    <div class="overflow-x-auto">
+      <table class="table w-full text-right">
+        <!-- head -->
+        <thead>
+        <tr>
+          <th class="rounded-tr-lg rounded-tl-none"></th>
+          <th>روز هفته</th>
+          <th>زمان</th>
+          <th>تاریخ ایجاد</th>
+          <th class="rounded-tl-lg rounded-tr-none">معتبر توسط مدیر</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- row 1 -->
+        <tr *ngFor="let item of data;let i = index;">
+          <th>{{i+1}}</th>
+          <td>{{item.Date}} Day</td>
+          <td>{{item.StartTime}} الی {{item.EndTime}}</td>
+          <td>{{item.DateCreate | date}}</td>
+          <td *ngIf="item.IsValidByAdmin"><i class="fa-light fa-check"></i></td>
+          <td *ngIf="!item.IsValidByAdmin"><i class="fa-light fa-close"></i></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

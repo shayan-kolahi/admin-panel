@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {MatInputModule} from '@angular/material/input';
-import { AuthRoutingModule } from './auth-routing.module';
-import { AuthComponent } from './components/auth/auth.component';
+import {AuthRoutingModule} from './auth-routing.module';
+import {AuthComponent} from './components/auth/auth.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 
@@ -11,12 +11,13 @@ import {HttpClientModule} from "@angular/common/http";
   declarations: [
     AuthComponent
   ],
-    imports: [
-        CommonModule,
-        MatInputModule,
-        AuthRoutingModule,
-        FormsModule,
-      HttpClientModule
-    ]
+  imports: [
+    CommonModule,
+    MatInputModule,
+    AuthRoutingModule,
+    FormsModule,
+    HttpClientModule
+  ]
 })
-export class AuthModule { }
+export class AuthModule {
+}

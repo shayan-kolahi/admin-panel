@@ -9,9 +9,11 @@ export class InterceptorService implements HttpInterceptor {
   }
 
   intercept(httpRequest: HttpRequest<any>, next: HttpHandler,): Observable<HttpEvent<any>> {
-    console.log('1111',this.cookieService.get('token'))
-    const authReq = httpRequest.clone({headers: httpRequest.headers.set('authorization', 'Bearer ' + this.cookieService.get('token'))})
-    console.log(authReq)
+    const authReq = httpRequest.clone({headers: httpRequest.headers
+        .set('Content-Type', 'application/json')
+        .set('Authorization', 'Bearer ' + this.cookieService.get('token'))
+        .set('Token', this.cookieService.get('token'))
+    })
     return next.handle(authReq);
   }
 }

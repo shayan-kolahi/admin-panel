@@ -34,8 +34,9 @@ export class AuthComponent implements OnInit {
 
 
   LogInInput:LogInInput = {
-    email : "" ,
-    password : "" ,
+    UserName: "0480263477",
+    Password: "09129058125",
+    Role: "Teacher"
   }
   logInValidationAuth(){
     const Toast = Swal.mixin({
@@ -50,32 +51,35 @@ export class AuthComponent implements OnInit {
         toast.addEventListener('mouseleave', Swal.resumeTimer)
       }
     })
-    if (!this.AuthValidationService.isEmpty(this.LogInInput.email) ||
-      !this.AuthValidationService.isEmpty(this.LogInInput.password)){
+    if (!this.AuthValidationService.isEmpty(this.LogInInput.UserName) ||
+      !this.AuthValidationService.isEmpty(this.LogInInput.Password)){
       Toast.fire({
         icon: 'error',
         title: 'خطا',
         text: 'فیلد ها را پر کنید',
       })
-    } else if (!this.AuthValidationService.isEmail(this.LogInInput.email)){
-      Toast.fire({
-        icon: 'error',
-        title: 'خطا',
-        text: 'لطفا ایمیل درست وارد کنید !',
-      })
-    } else {
+    }
+    // else if (!this.AuthValidationService.isEmail(this.LogInInput.email)){
+    //   Toast.fire({
+    //     icon: 'error',
+    //     title: 'خطا',
+    //     text: 'لطفا ایمیل درست وارد کنید !',
+    //   })
+    // }
+    else {
       this.loading = true;
       this.LogInApiService.login_api(this.LogInInput).subscribe({
         next: data => {
-          this.cookieService.set('token', data.data.token);
+          this.cookieService.set('token', data.Token);
+          this.cookieService.set('TeacherId', data.TeacherId);
           this.router.navigate(['/'])
+          console.log(data)
         },
         error: error => {
           console.log(error.error);
           Toast.fire({
             icon: 'error',
             title: 'خطا',
-            text: error.error.message,
           })
           this.loading = false;
         },

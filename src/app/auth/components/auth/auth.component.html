@@ -7,12 +7,12 @@
             </div>
             <div class="col-lg-6 p-1 flex flex-col relative">
               <label class="mb-3 flex text-base text-gray-500	">ایمیل</label>
-              <input (keyup.enter)="logInValidationAuth()" [(ngModel)]="LogInInput.email" name="email" type="email" placeholder="test@test.com" class="pr-9 text-base input input-bordered input-gray w-full" />
+              <input (keyup.enter)="logInValidationAuth()" [(ngModel)]="LogInInput.UserName" name="email" type="email" placeholder="test@test.com" class="pr-9 text-base input input-bordered input-gray w-full" />
               <i class="far fa-at absolute right-4 text-gray-400 text-lg bottom-3"></i>
             </div>
             <div class="col-lg-6 p-1 flex flex-col relative">
               <label class="mb-3 flex text-base text-gray-500	">رمز کاربری</label>
-              <input (keyup.enter)="logInValidationAuth()" [(ngModel)]="LogInInput.password" name="password" [type]="eyes.eye1 ? 'text' : 'password'" placeholder="..." class="pr-9 text-base input input-bordered input-gray w-full" />
+              <input (keyup.enter)="logInValidationAuth()" [(ngModel)]="LogInInput.Password" name="password" [type]="eyes.eye1 ? 'text' : 'password'" placeholder="..." class="pr-9 text-base input input-bordered input-gray w-full" />
               <i class="far fa-key-skeleton absolute right-4 text-gray-400 text-lg bottom-3"></i>
               <i class="far absolute left-4 text-gray-400 text-lg bottom-3 cursor-pointer"
                  [class]="eyes.eye1 ? 'fa-eye-slash' : 'fa-eye'"

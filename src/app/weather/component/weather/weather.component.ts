@@ -28,8 +28,6 @@ export class WeatherComponent implements OnInit {
         this.isLoader = false;
         this.weatherInfo = data;
         this.weatherInfo.name = this.searchInput
-        console.log(this.weatherInfo)
-
       },
       error: err => {
         window.location.reload();
