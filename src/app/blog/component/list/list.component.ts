@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
+import {BlogService} from "../../../services/blog.service";
 
 @Component({
   selector: 'app-list',
@@ -9,31 +10,27 @@ import {HttpClient} from "@angular/common/http";
 })
 export class ListComponent implements OnInit {
 
-  constructor(private _http:HttpClient) { }
-
-  isEmpty:boolean = true;
-  infoBlog:any;
+  constructor(private BlogService:BlogService) { }
+  isLoader:boolean = true;
+  data:any;
   ngOnInit(): void {
-    this.infoBlog = JSON.parse(<any>localStorage.getItem("blog"))
-    this.isEmpty = this.infoBlog === null;
-    this.getList()
-  }
-
-  /**
-  * get the list from free api
-  * */
-  getList(){
-    this._http.get('https://reqres.in/api/users/').subscribe(
-      result=>{
-        console.log(result)
-      }
-    )
-  }
-
-
-  clickDelete(idBlog:any){
-    console.log(this.infoBlog.splice(idBlog , 1))
-    localStorage.setItem("blog" , JSON.stringify(this.infoBlog))
+    this.BlogService.blog_post().subscribe({
+      next:data => {
+        console.log(data)
+      },
+      error:err => {
+        console.log(err)
+      },
+    })
+      this.BlogService.blog_get().subscribe({
+      next:data => {
+        this.data = data
+        this.isLoader = false;
+      },
+      error:err => {
+        console.log(err)
+      },
+    })
   }
 
 

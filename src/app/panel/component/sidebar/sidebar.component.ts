@@ -46,11 +46,6 @@ export class SidebarComponent implements OnInit {
       link : "/blog"
     },
     {
-      text : 'مقالات مفید',
-      icon : 'fa-sparkles',
-      link : "/articles"
-    },
-    {
       text : 'الو استاد',
       icon : 'fa-sparkles',
       link : "/aloostad"

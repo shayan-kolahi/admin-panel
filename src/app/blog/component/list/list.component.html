@@ -1,42 +1,13 @@
-<div class="p-5">
-  <div class="header pb-3">
-    <div class="flex justify-between items-center	">
-      <h2 class="font-normal text-2xl leading-6 text-gray-600 m-0 p-0 title_font">لیست همه وبلاگ ها</h2>
-      <button routerLink="add" class="btn btn-primary">افزودن وبلاگ</button>
+<section class="p-5">
+  <div *ngIf="isLoader">
+    <app-loader></app-loader>
+  </div>
+  <div class="card card-body card-compact bg-base-100 shadow-xl grid grid-cols-3 gap-4" *ngIf="!isLoader">
+    <div class="card bg-base-100 shadow-xl border" *ngFor="let item of data">
+      <div class="card-body flex flex-col">
+        <h2 class="text-justify">{{item.title}}</h2>
+        <p class="mt-auto text-justify flex items-end m-0">{{item.body}}</p>
+      </div>
     </div>
   </div>
-  <div class="p-3 border border-slate-300 rounded">
-    <div *ngIf="!isEmpty" class="overflow-x-auto ">
-      <table class="table w-full  text-right">
-        <!-- head -->
-        <thead>
-        <tr>
-          <th></th>
-          <th>تایتل</th>
-          <th>تاریخ</th>
-          <th>بازدید</th>
-          <th></th>
-          <th></th>
-          <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let item of infoBlog ; let i = index" >
-          <th>{{i + 1}}</th>
-          <td>{{item.title}}</td>
-          <td>{{item.date}}</td>
-          <td><div class="badge badge-ghost">{{item.view}}</div></td>
-          <td><app-btn-edit [routerLink]="['edit/' , item.id]"></app-btn-edit></td>
-          <td>
-            <div class="tooltip" data-tip="جزییات وبلاگ">
-              <button [routerLink]="['view/' , item.id]" class="btn btn-primary text-1xl far fa-eye"></button>
-            </div>
-          </td>
-          <td><app-btn-delete (click)="clickDelete(i)"></app-btn-delete></td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
-    <div *ngIf="isEmpty">:)</div>
-  </div>
-</div>
+</section>
