@@ -8,7 +8,6 @@ export class InterceptorService implements HttpInterceptor {
   constructor(private cookieService: CookieService,) {
   }
   intercept(httpRequest: HttpRequest<any>, next: HttpHandler,): Observable<HttpEvent<any>> {
-    console.log("asd")
     const authReq = httpRequest.clone({headers: httpRequest.headers
         .set('Content-Type', 'application/json')
         .set('Authorization', 'Bearer ' + this.cookieService.get('token'))
