@@ -4,7 +4,7 @@ import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn:FreeTimeService
 })
 export class FreeTimeService {
   constructor(private http: HttpClient) { }

@@ -7,6 +7,7 @@ import { AddAndEditComponent } from './component/addAndEdit/addAndEdit.component
 import { ListComponent } from './component/list/list.component';
 import {FormsModule} from "@angular/forms";
 import {ShareModule} from "../share/share.module";
+import {BlogService} from "../services/blog.service";
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import {ShareModule} from "../share/share.module";
     BlogRoutingModule,
     FormsModule,
     ShareModule,
-  ]
+  ],
+  providers:[BlogService]
 })
 export class BlogModule { }

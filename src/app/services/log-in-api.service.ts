@@ -6,15 +6,11 @@ import {environment} from "../../environments/environment";
 
 
 @Injectable({
-  providedIn: 'root'
+  providedIn:LogInApiService
 })
 export class LogInApiService {
   constructor(private http: HttpClient,) { }
   login_api(body:LogInInput): Observable<any>{
-    // let headers= new HttpHeaders({
-    //   'Content-Type':  'application/json',
-    //   'Authorization': 'my-auth-token'
-    // });
     return this.http.post<any>(`${environment.baseUrl}Auth/Login`, body)
   }
 

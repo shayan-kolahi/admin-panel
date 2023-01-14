@@ -3,7 +3,7 @@ import {Observable} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: BlogService
 })
 export class BlogService {
   constructor(private http: HttpClient) { }

@@ -1,12 +1,12 @@
-import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {Injectable} from "@angular/core";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: CurrencyService,
 })
-export class CurrencyService {
 
+export class CurrencyService {
   constructor(private http: HttpClient,) { }
   currencyApi() : Observable<any>{
     return this.http.get<any>("https://api.coinpaprika.com/v1/coins")
@@ -14,5 +14,4 @@ export class CurrencyService {
   currencyApiDetails(coin:string) : Observable<any>{
     return this.http.get<any>(`https://api.coinpaprika.com/v1/coins/${coin}`)
   }
-
 }

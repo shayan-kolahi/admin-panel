@@ -6,6 +6,7 @@ import {CurrencyComponent} from './component/currency/currency.component';
 import {ScrollingModule} from "@angular/cdk/scrolling";
 import {DetailsComponent} from './component/details/details.component';
 import {ShareModule} from "../share/share.module";
+import {CurrencyService} from "../services/currency.service";
 @NgModule({
   declarations: [
     CurrencyComponent,
@@ -18,6 +19,7 @@ import {ShareModule} from "../share/share.module";
     ShareModule,
     HttpClientModule,
   ],
+  providers:[CurrencyService]
 })
 export class CurrencyModule {
 }

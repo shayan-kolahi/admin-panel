@@ -6,6 +6,7 @@ import {AuthComponent} from './components/auth/auth.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {ShareModule} from "../share/share.module";
+import {LogInApiService} from "../services/log-in-api.service";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {ShareModule} from "../share/share.module";
     FormsModule,
     HttpClientModule,
     ShareModule,
-  ]
+  ],
+  providers:[LogInApiService]
 })
 export class AuthModule {
 }
