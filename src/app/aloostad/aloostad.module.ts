@@ -13,6 +13,5 @@ import {AloostadService} from "../services/aloostad.service";
     AloostadRoutingModule,
     ShareModule
   ],
-  providers:[AloostadService]
 })
 export class AloostadModule { }
