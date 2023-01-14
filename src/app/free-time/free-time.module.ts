@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { FreeTimeRoutingModule } from './free-time-routing.module';
 import { FreeTimeComponent } from './components/free-time/free-time.component';
-import {LoaderModule} from "../loader/loader.module";
+import {ShareModule} from "../share/share.module";
 
 
 @NgModule({
@@ -13,7 +13,7 @@ import {LoaderModule} from "../loader/loader.module";
   imports: [
     CommonModule,
     FreeTimeRoutingModule,
-    LoaderModule
+    ShareModule
   ]
 })
 export class FreeTimeModule { }

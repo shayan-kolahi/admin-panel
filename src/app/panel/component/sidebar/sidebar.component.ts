@@ -14,13 +14,26 @@ export class SidebarComponent implements OnInit {
   nameProfile?:string;
   isActiveLoading:boolean = true
   ngOnInit(): void {
+    let Toast = this.AppService.Toast
     this.AloostadService.profile(this.AppService.TeacherId).subscribe({
       next:data => {
         this.nameProfile = data.FirstName + " " + data.LastName;
         this.isActiveLoading = false
       },
       error:err => {
-        console.log(err)
+        if (err.message === "Http failure response for https://back.aloostad.com/Teacher/getById?id=8837: 0 Unknown Error"){
+          Toast.fire({
+            icon: 'error',
+            title: 'خطا',
+            text: 'در اتصال به اینترنت',
+          })
+        } else {
+          console.log("New Error => " , err)
+          Toast.fire({
+            icon: 'error',
+            title: 'خطا',
+          })
+        }
       },
     })
   }

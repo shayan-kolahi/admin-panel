@@ -5,14 +5,12 @@ import {CookieService} from 'ngx-cookie-service';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {shayanDirective} from "src/app/directives/shayanDirective";
 
 import {InterceptorService} from "./services/interceptor.service";
 
 @NgModule({
   declarations: [
     AppComponent,
-    shayanDirective,
   ],
   imports: [
     BrowserModule,

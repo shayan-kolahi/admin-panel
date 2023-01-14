@@ -9,7 +9,7 @@ const routes: Routes = [
     children : [
       {
         path      : '',
-        redirectTo: 'dashboard',
+        redirectTo: 'Observable',
         pathMatch : 'full'
       },
       {path: "dashboard", loadChildren: () => import('../dashboard/dashboard.module').then(m => m.DashboardModule)},
@@ -17,6 +17,7 @@ const routes: Routes = [
       {path: "currency", loadChildren: () => import('../currency/currency.module').then(m => m.CurrencyModule)},
       {path: "weather", loadChildren: () => import('../weather/weather.module').then(m => m.WeatherModule)},
       {path: "aloostad", loadChildren: () => import('../aloostad/aloostad.module').then(m => m.AloostadModule)},
+      {path: "Observable", loadChildren: () => import('../observable/observable.module').then(m => m.ObservableModule)},
     ]
   },
 

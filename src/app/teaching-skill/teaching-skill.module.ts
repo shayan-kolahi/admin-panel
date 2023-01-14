@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 
 import { TeachingSkillRoutingModule } from './teaching-skill-routing.module';
 import { TeachingSkillComponent } from './components/teaching-skill/teaching-skill.component';
-import {LoaderModule} from "../loader/loader.module";
+import {ShareModule} from "../share/share.module";
 
 
 @NgModule({
@@ -14,7 +14,7 @@ import {LoaderModule} from "../loader/loader.module";
   imports: [
     CommonModule,
     TeachingSkillRoutingModule,
-    LoaderModule
+    ShareModule
   ]
 })
 export class TeachingSkillModule { }

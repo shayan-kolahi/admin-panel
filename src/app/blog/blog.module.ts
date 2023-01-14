@@ -6,7 +6,7 @@ import { ViewComponent } from './component/view/view.component';
 import { AddAndEditComponent } from './component/addAndEdit/addAndEdit.component';
 import { ListComponent } from './component/list/list.component';
 import {FormsModule} from "@angular/forms";
-import {LoaderModule} from "../loader/loader.module";
+import {ShareModule} from "../share/share.module";
 
 
 @NgModule({
@@ -19,7 +19,7 @@ import {LoaderModule} from "../loader/loader.module";
     CommonModule,
     BlogRoutingModule,
     FormsModule,
-    LoaderModule,
+    ShareModule,
   ]
 })
 export class BlogModule { }

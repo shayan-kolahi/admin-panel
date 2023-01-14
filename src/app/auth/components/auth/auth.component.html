@@ -1,71 +1,51 @@
-<section class="h-screen w-screen bg-slate-100 flex justify-center items-center">
+<section class="h-screen flex items-center">
   <div class="container">
-      <div class="col-lg-5 mx-auto col-12 card bg-white justify-center items-center shadow-xl card-body">
-        <div *ngIf="isActive" class="w-100 col-12 flex flex-wrap">
-            <div class="w-100 mx-auto p-1 flex col-12 flex justify-center	">
-              <h2 class="mb-3 flex text-base text-gray-700">ورود</h2>
+    <div appBox>
+      <div class="grid grid-cols-2 gap-4">
+        <div class="md:col-span-1 col-span-2">
+          <div class="flex flex-wrap flex-col">
+            <div class="w-full mb-5 p-1 flex col-12 flex justify-center items-center	flex-col">
+              <h2 class="flex text-4xl title_font text-gray-700">ورود</h2>
             </div>
-            <div class="col-lg-6 p-1 flex flex-col relative">
-              <label class="mb-3 flex text-base text-gray-500	">ایمیل</label>
-              <input (keyup.enter)="logInValidationAuth()" [(ngModel)]="LogInInput.UserName" name="email" type="email" placeholder="test@test.com" class="pr-9 text-base input input-bordered input-gray w-full" />
-              <i class="far fa-at absolute right-4 text-gray-400 text-lg bottom-3"></i>
+            <div class="flex flex-col relative mb-5">
+              <label class="mb-3 flex text-lg text-gray-700">ایمیل</label>
+              <input appInput
+                     class="pr-11"
+                     (keyup.enter)="logInValidationAuth()"
+                     [(ngModel)]="LogInInput.UserName"
+                     name="email"
+                     type="email"
+                     placeholder="test@test.com" />
+              <i class="far fa-at absolute right-4 text-gray-700 text-lg bottom-3"></i>
             </div>
-            <div class="col-lg-6 p-1 flex flex-col relative">
-              <label class="mb-3 flex text-base text-gray-500	">رمز کاربری</label>
-              <input (keyup.enter)="logInValidationAuth()" [(ngModel)]="LogInInput.Password" name="password" [type]="eyes.eye1 ? 'text' : 'password'" placeholder="..." class="pr-9 text-base input input-bordered input-gray w-full" />
-              <i class="far fa-key-skeleton absolute right-4 text-gray-400 text-lg bottom-3"></i>
-              <i class="far absolute left-4 text-gray-400 text-lg bottom-3 cursor-pointer"
-                 [class]="eyes.eye1 ? 'fa-eye-slash' : 'fa-eye'"
-                 (click)="eyes.eye1 = !eyes.eye1;">
+            <div class="flex flex-col relative mb-5">
+              <label class="mb-3 flex text-lg text-gray-700">رمز کاربری</label>
+              <input appInput
+                     class="pr-11"
+                     (keyup.enter)="logInValidationAuth()"
+                     [(ngModel)]="LogInInput.Password"
+                     name="password"
+                     [type]="eye ? 'text' : 'password'"
+                     placeholder="..." />
+              <i class="far fa-key-skeleton absolute right-4 text-gray-700 text-lg bottom-3"></i>
+              <i class="far absolute left-4 text-gray-700 text-lg bottom-3 cursor-pointer"
+                 [class]="eye ? 'fa-eye-slash' : 'fa-eye'"
+                 (click)="eye = !eye;">
               </i>
             </div>
-            <div class="w-100 mx-auto mt-7 p-1 flex flex-col">
-              <button [disabled]="loading ? 'disabled' : ''" (click)="logInValidationAuth()" class="btn btn-primary">
+            <div class="flex flex-col justify-center items-center">
+              <button appButton
+                      [disabled]="loading ? 'disabled' : ''" (click)="logInValidationAuth()">
                 <i *ngIf="this.loading" class="far fa-spinner-third animate-spin"></i>
                 <span *ngIf="!this.loading">ارسال</span>
               </button>
-              <button (click)="changeAuth()" class="btn btn-link">ثبت نام</button>
             </div>
           </div>
-
-          <div *ngIf="!isActive" class="w-100 col-12 flex flex-wrap">
-            <div class="w-100 mx-auto p-1 flex col-12 flex justify-center	">
-              <h2 class="mb-3 flex text-base text-gray-700">ثبت نام</h2>
-            </div>
-            <div class="col-lg-6 p-1 flex flex-col relative">
-              <label class="mb-3 flex text-base text-gray-500	">ایمیل</label>
-              <input (keyup.enter)="registerValidationAuth()" [(ngModel)]="RegisterInput.email" type="email" placeholder="test@test.com" class="pr-9 text-base input input-bordered input-gray w-full" />
-              <i class="far fa-at absolute right-4 text-gray-400 text-lg bottom-3"></i>
-            </div>
-            <div class="col-lg-6 p-1 flex flex-col relative">
-              <label class="mb-3 flex text-base text-gray-500	">نام</label>
-              <input (keyup.enter)="registerValidationAuth()" [(ngModel)]="RegisterInput.name" type="text" placeholder="نام و نام خانوادگی" class="pr-9 text-base input input-bordered input-gray w-full" />
-              <i class="far fa-user absolute right-4 text-gray-400 text-lg bottom-3"></i>
-            </div>
-            <div class="col-lg-6 p-1 flex flex-col relative">
-              <label class="mb-3 flex text-base text-gray-500	">رمز کاربری</label>
-              <input (keyup.enter)="registerValidationAuth()" [(ngModel)]="RegisterInput.password" [type]="eyes.eye2 ? 'text' : 'password'" placeholder="..." class="pr-9 text-base input input-bordered input-gray w-full" />
-              <i class="far fa-key-skeleton absolute right-4 text-gray-400 text-lg bottom-3"></i>
-              <i class="far absolute left-4 text-gray-400 text-lg bottom-3 cursor-pointer"
-                 [class]="eyes.eye2 ? 'fa-eye-slash' : 'fa-eye'"
-                 (click)="eyes.eye2 = !eyes.eye2;">
-              </i>
-            </div>
-            <div class="col-lg-6 p-1 flex flex-col relative">
-              <label class="mb-3 flex text-base text-gray-500	">تکرار رمز کاربری</label>
-              <input (keyup.enter)="registerValidationAuth()" [(ngModel)]="RegisterInput.re_password" [type]="eyes.eye3 ? 'text' : 'password'" placeholder="..." class="pr-9 text-base input input-bordered input-gray w-full" />
-              <i class="far fa-key-skeleton absolute right-4 text-gray-400 text-lg bottom-3"></i>
-              <i class="far absolute left-4 text-gray-400 text-lg bottom-3 cursor-pointer"
-                 [class]="eyes.eye3 ? 'fa-eye-slash' : 'fa-eye'"
-                 (click)="eyes.eye3 = !eyes.eye3;">
-              </i>
-            </div>
-            <div class="w-100 mx-auto mt-7 p-1 flex flex-col">
-              <button (click)="registerValidationAuth()" class="btn btn-primary">ارسال</button>
-              <button (click)="changeAuth()" class="btn btn-link">ورود</button>
-            </div>
-          </div>
-
+        </div>
+        <div class="h-[400px] md:flex hidden">
+          <img class="object-contain w-full h-full" src="../../../../assets/images/logIn.png" alt="logIn">
+        </div>
       </div>
+    </div>
   </div>
 </section>

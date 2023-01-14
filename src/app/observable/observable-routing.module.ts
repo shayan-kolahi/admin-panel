@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-// import {LoaderComponent} from "./components/loader/loader.component";
+import {ObservableComponent} from "./components/observable/observable.component";
 
 const routes: Routes = [
-  // {path: "", component: LoaderComponent},
+  {path:"",component:ObservableComponent}
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class LoaderRoutingModule { }
+export class ObservableRoutingModule { }
