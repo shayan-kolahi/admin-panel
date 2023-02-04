@@ -1,47 +1,85 @@
 <section class="p-5">
-  <div class="header py-5">
-    <div class="flex justify-between items-center	">
-      <h2 class="font-normal text-2xl leading-6 text-gray-600 m-0 p-0 title_font">لیست کریپتو کارنسی</h2>
+  <div appBox>
+    <div class="header flex justify-between items-center pb-5 mb-5 border-b">
+      <h2 class="flex text-2xl title_font text-gray-700 m-0">کریپتوکارنسی</h2>
     </div>
-  </div>
-
-  <div *ngIf="isLoader">
-    <app-loader></app-loader>
-  </div>
-  <div *ngIf="!isLoader">
-      <div class="overflow-x-auto w-full">
-
-
-        <cdk-virtual-scroll-viewport itemSize="50" class="h-screen w-full virtualMain">
-          <table class="table table-zebra w-full text-right">
-            <thead>
-            <tr class="h-20">
-              <th></th>
-              <th>نام</th>
-              <th>تایپ</th>
-              <th>نماد</th>
-              <th>رتبه</th>
-              <th>ای دی</th>
-              <th>فعال</th>
-              <th>جدید</th>
-              <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *cdkVirtualFor="let item of currency;let i = index" class="h-20">
-              <th>{{i + 1}}</th>
-              <td> {{item.name}}</td>
-              <td> {{item.type}}</td>
-              <td> {{item.symbol}}</td>
-              <td> {{item.rank}}</td>
-              <td> {{item.id}}</td>
-              <td> {{item.is_active}}</td>
-              <td> {{item.is_new}}</td>
-              <td><button [routerLink]="['details/' , item.id]" class="btn btn-link">بیشتر</button></td>
-            </tr>
-            </tbody>
-          </table>
-        </cdk-virtual-scroll-viewport>
+    <ng-container *ngIf="!isLoader">
+      <div class="header flex justify-center items-center pb-10 mt-5">
+        <h2 class="flex text-2xl title_font text-gray-600 m-0">5 تا از بهترین کریپتوکارنسی ها</h2>
       </div>
+      <div>
+        <owl-carousel-o [options]="customOptions">
+          <ng-template *ngFor="let item of best_currency" carouselSlide>
+            <a [routerLink]="['details/', item.id]" class="relative p-4 rounded-lg bg-blue-500 hover:bg-blue-600 transition-all flex items-end flex-col">
+              <div class="flex flex-col text-white justify-end text-left mb-4">
+                <h2 class="text-xl font-light m-0">{{item.name}}</h2>
+                <i class="text-xs not-italic font-medium">
+                  <span class="ml-1">( {{item.type}} )</span>
+                  {{item.symbol}}
+                </i>
+              </div>
+              <div class="w-full flex flex-col justify-end text-left gap-2.5">
+          <span class="text-white flex items-center justify-end bg-blue-700 rounded-md py-1 px-2">
+            <span class="ml-auto bg-blue-600 rounded-md w-8 h-8 flex justify-center items-center">{{item.rank}}</span>
+            <span>ranking</span>
+          </span>
+                <span class="text-white flex items-center justify-end bg-blue-700 rounded-md py-1 px-2">
+            <span [class]="item.is_active ? 'fa-light fa-check ml-auto bg-blue-600 rounded-md w-8 h-8 flex justify-center items-center' :''"></span>
+            <span [class]="!item.is_active ? 'fa-light fa-close ml-auto bg-blue-600 rounded-md w-8 h-8 flex justify-center items-center' :''"></span>
+            <span>active</span>
+          </span>
+                <span class="text-white flex items-center justify-end bg-blue-700 rounded-md py-1 px-2">
+            <span [class]="item.is_new ? 'fa-light fa-check ml-auto bg-blue-600 rounded-md w-8 h-8 flex justify-center items-center' :''"></span>
+            <span [class]="!item.is_new ? 'fa-light fa-close ml-auto bg-blue-600 rounded-md w-8 h-8 flex justify-center items-center' :''"></span>
+            <span>new</span>
+          </span>
+              </div>
+            </a>
+          </ng-template>
+        </owl-carousel-o>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="!isLoader">
+      <div class="header flex justify-center items-center pb-10 mt-10">
+        <h2 class="flex text-2xl title_font text-gray-600 m-0">لیست کریپتوکارنسی ها</h2>
+      </div>
+      <cdk-virtual-scroll-viewport appendOnly itemSize="50" class="h-96">
+        <table class="table w-full text-left EN_direction overflow-x-auto">
+          <thead class="sticky top-0 z-50 w-full">
+          <tr>
+            <td class="bg-blue-500 text-base normal-case font-normal text-white"><i class="fa-solid fa-hashtag"></i></td>
+            <td class="bg-blue-500 text-base normal-case font-normal text-white">name</td>
+            <td class="bg-blue-500 text-base normal-case font-normal text-white">is active</td>
+            <td class="bg-blue-500 text-base normal-case font-normal text-white">rank</td>
+            <td class="bg-blue-500 text-base normal-case font-normal text-white">type</td>
+            <td class="bg-blue-500 text-base normal-case font-normal text-white">is new</td>
+            <td class="bg-blue-500 text-base normal-case font-normal text-white">symbol</td>
+            <td class="bg-blue-500 text-base normal-case font-normal text-white"></td>
+          </tr>
+          </thead>
+          <tbody class="active w-full">
+          <tr *cdkVirtualFor="let item of currency;let i = index" class="h-2 w-full">
+            <td>{{i +1}}</td>
+            <td>{{item.name}}</td>
+            <td>
+              <i class="fa-light" [class]="item.is_active ? 'fa-check' : 'fa-close'"></i>
+            </td>
+            <td>{{item.rank}}</td>
+            <td>{{item.type}}</td>
+            <td>
+              <i class="fa-light" [class]="item.is_new ? 'fa-check' : 'fa-close'"></i>
+            </td>
+            <td>{{item.symbol}}</td>
+            <td>
+              <button [routerLink]="['details/' , item.id]" appButton>more details</button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </cdk-virtual-scroll-viewport>
+    </ng-container>
+    <ng-container *ngIf="isLoader">
+      <app-Spinner_loader></app-Spinner_loader>
+    </ng-container>
   </div>
 </section>

@@ -32,9 +32,26 @@ html , body{
   background: #f5f5f5;
   font-family: iransans , sans-serif ; direction: rtl
 }
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.FA_direction{
+  direction: rtl;
+}
+.EN_direction{
+  direction: ltr;
+}
+tbody.active > tr:nth-child(even) > th,
+tbody.active > tr:nth-child(even) > td{
+  background: #eee9 !important;
+}
+.owl-nav>div{
+  padding: 0.25rem 0.5rem !important;
+  background: #1d4ed8 !important;
+  color: #fff !important;
+}
 .title_font{
   font-family: 'Mikhak' , sans-serif !important;
 }

@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {FreeTimeComponent} from "./components/free-time/free-time.component";
 
 const routes: Routes = [
-  {path : "" , component : FreeTimeComponent}
+  {path : "" , component : FreeTimeComponent,title: "AdminPanel | FreeTime"}
 ];
 
 @NgModule({

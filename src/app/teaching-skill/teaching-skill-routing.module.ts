@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {TeachingSkillComponent} from "./components/teaching-skill/teaching-skill.component";
 
 const routes: Routes = [
-  {path:"",component:TeachingSkillComponent}
+  {path:"",component:TeachingSkillComponent,title: "AdminPanel | TeachingSkill"}
 ];
 
 @NgModule({

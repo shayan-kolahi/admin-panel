@@ -39,30 +39,10 @@ export class AuthComponent {
         next: data => {
           this.cookieService.set('token', data.Token);
           this.cookieService.set('TeacherId', data.TeacherId);
-          this.router.navigate(['/']) 
+          this.router.navigate(['/'])
         },
         error:err => {
-          if (err.message === "Http failure response for https://back.aloostad.com/Auth/Login: 0 Unknown Error"){
-            Toast.fire({
-              icon: 'error',
-              title: 'خطا',
-              text: 'در اتصال به اینترنت',
-            })
-            this.loading = false;
-          } else if (err.message === "Http failure response for https://back.aloostad.com/Auth/Login: 401 OK"){
-            Toast.fire({
-              icon: 'error',
-              title: 'خطا',
-              text: 'کاربری با این اطلاعات یافت نشد',
-            })
-            this.loading = false;
-          } else {
-            console.log("New Error => " , err)
-            Toast.fire({
-              icon: 'error',
-              title: 'خطا',
-            })
-          }
+          this.AppService.Swal_reload()
         },
       })
     }

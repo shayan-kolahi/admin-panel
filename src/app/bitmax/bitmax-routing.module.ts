@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {WeatherComponent} from "./component/weather/weather.component";
+import {BitmaxComponent} from "./components/bitmax/bitmax.component";
 
 const routes: Routes = [
-  {path: "", component : WeatherComponent,title: "AdminPanel | Weather"},
+  {path:"",component:BitmaxComponent,title: "AdminPanel | Bitmax"}
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class WeatherRoutingModule { }
+export class BitmaxRoutingModule { }

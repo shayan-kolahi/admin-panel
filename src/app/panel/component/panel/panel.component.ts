@@ -6,15 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./panel.component.scss']
 })
 export class PanelComponent implements OnInit {
-
   constructor() { }
-
-  ngOnInit(): void {
-  }
-
   isActive_sidebar : boolean = true;
+  ngOnInit(): void {
+    if(window.innerWidth < 1024){
+      this.isActive_sidebar = false
+    }
+  }
   status_sidebar(e: boolean) {
     this.isActive_sidebar = e;
   }
-
 }

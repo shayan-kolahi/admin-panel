@@ -1,33 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {CurrencyService} from "../../../services/currency.service";
+import {CurrencyDetails} from "../../../interface/currency_details";
 
 @Component({
   selector: 'app-details',
-  templateUrl: './details.component.html',
-  styleUrls: ['./details.component.scss']
+  templateUrl: './details.component.html'
 })
 export class DetailsComponent implements OnInit {
-
-  blogId:any;
+  currencyId:any;
+  isLoader:boolean = true
+  item: CurrencyDetails;
   constructor(private CurrencyService:CurrencyService ,private getId: ActivatedRoute,) {
     getId.params.subscribe((params) => {
-      this.blogId = params["id"]
+      this.currencyId = params["id"]
     })
   }
-
-  isLoader:boolean = true
-  data: any;
-  links:any;
   ngOnInit(): void {
-    this.CurrencyService.currencyApiDetails(this.blogId).subscribe({
+    this.CurrencyService.currencyApiDetails(this.currencyId).subscribe({
       next:data => {
         this.isLoader = false;
-        this.data = data
-        this.links = Object.entries(data.links)
-        this.links.shift()
+        this.item = data;
+        Object.keys(data.links).map(element => element.toLowerCase())
+        delete data.links.explorer
       }
     })
   }
-
 }

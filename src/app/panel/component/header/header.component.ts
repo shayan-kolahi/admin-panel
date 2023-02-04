@@ -1,4 +1,4 @@
-import { Output, EventEmitter , Component } from '@angular/core';
+import {Output, EventEmitter, Component, OnInit} from '@angular/core';
 import {CookieService} from "ngx-cookie-service";
 import {Router} from "@angular/router";
 import Swal from 'sweetalert2';
@@ -8,11 +8,17 @@ import Swal from 'sweetalert2';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit{
   constructor(private cookieService: CookieService,
               private router: Router,) { }
   @Output() status_sidebar = new EventEmitter<boolean>();
   isActive : boolean = true;
+  ngOnInit(): void {
+    if(window.innerWidth < 1024){
+      this.isActive = false
+      console.log("asd")
+    }
+  }
   click_status() {
     this.isActive = !this.isActive
     this.status_sidebar.emit(this.isActive);

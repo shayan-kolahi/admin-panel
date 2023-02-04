@@ -6,16 +6,13 @@ import Swal from 'sweetalert2';
   providedIn: 'root'
 })
 export class AppService {
-
   constructor(private cookieService: CookieService,) { }
-
   get token ():string{
     return this.cookieService.get('token')
   }
   get TeacherId ():number{
     return Number(this.cookieService.get('TeacherId'))
   }
-
   get Toast ():any{
     return Swal.mixin({
       toast: true,
@@ -30,5 +27,24 @@ export class AppService {
       }
     })
   }
-
+  Swal_reload(){
+    Swal.fire({
+      customClass: {
+        confirmButton: 'btn btn-primary ml-3',
+        cancelButton: 'btn btn-link'
+      },
+      buttonsStyling: false,
+      title: 'متاسفانه پاسخی از سرور یافت نشد',
+      text: "میخوای صفحه رو رفرش کنی ؟",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'بله',
+      cancelButtonText: 'نه',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.reload();
+      }
+    })
+  }
 }

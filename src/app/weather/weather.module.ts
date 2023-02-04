@@ -6,6 +6,7 @@ import { WeatherComponent } from './component/weather/weather.component';
 import {FormsModule} from "@angular/forms";
 import {ShareModule} from "../share/share.module";
 import {WeatherService} from "../services/weather.service";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import {WeatherService} from "../services/weather.service";
     CommonModule,
     WeatherRoutingModule,
     FormsModule,
+    HttpClientModule,
     ShareModule
   ],
   providers:[WeatherService]

@@ -44,14 +44,19 @@ export class SidebarComponent implements OnInit {
       link : "/dashboard"
     },
     {
-      text : 'کریپتو کارنسی',
+      text : 'کریپتوکارنسی',
       icon : 'fa-coins',
       link : "/currency"
     },
     {
-      text : 'آب و هوا',
+      text : 'آب و هوا (vpn) ',
       icon : 'fa-sun-cloud',
       link : "/weather"
+    },
+    {
+      text : 'لیست کارا',
+      icon : 'fa-sparkles',
+      link : "/todo"
     },
     {
       text : 'وبلاگ',
@@ -62,6 +67,16 @@ export class SidebarComponent implements OnInit {
       text : 'الو استاد',
       icon : 'fa-sparkles',
       link : "/aloostad"
+    },
+    {
+      text : 'بیتمکس',
+      icon : 'fa-sparkles',
+      link : "/bitmax"
+    },
+    {
+      text : 'کانورت کن :)',
+      icon : 'fa-sparkles',
+      link : "/convertio"
     },
   ]
 

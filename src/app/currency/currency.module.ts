@@ -7,6 +7,9 @@ import {ScrollingModule} from "@angular/cdk/scrolling";
 import {DetailsComponent} from './component/details/details.component';
 import {ShareModule} from "../share/share.module";
 import {CurrencyService} from "../services/currency.service";
+import {CarouselModule} from "ngx-owl-carousel-o";
+
+
 @NgModule({
   declarations: [
     CurrencyComponent,
@@ -18,6 +21,7 @@ import {CurrencyService} from "../services/currency.service";
     ScrollingModule,
     ShareModule,
     HttpClientModule,
+    CarouselModule,
   ],
   providers:[CurrencyService]
 })

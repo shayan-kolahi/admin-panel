@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {WeatherService} from "../../../services/weather.service";
+import {AppService} from "../../../services/app.service";
 
 @Component({
   selector: 'app-weather',
@@ -8,20 +9,16 @@ import {WeatherService} from "../../../services/weather.service";
 })
 export class WeatherComponent implements OnInit {
 
-  constructor(private WeatherService:WeatherService) { }
-
+  constructor(private WeatherService:WeatherService,private AppService:AppService) { }
   searchInput:string = "tehran";
   weatherInfo:any;
   isLoader:boolean = true;
   ngOnInit(): void {
     this.WeatherApi()
   }
-
   formSearch(){
     this.WeatherApi()
   }
-
-
   WeatherApi(){
     this.WeatherService.weatherApi(this.searchInput).subscribe({
       next: data => {
@@ -30,7 +27,7 @@ export class WeatherComponent implements OnInit {
         this.weatherInfo.name = this.searchInput
       },
       error: err => {
-        window.location.reload();
+        this.AppService.Swal_reload()
       }
     })
     this.isLoader = true;
