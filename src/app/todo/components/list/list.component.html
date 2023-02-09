@@ -14,7 +14,7 @@
         </div>
       </div>
       <div class="flex md:flex-col mt-5 md:mt-0 justify-center w-full md:w-auto gap-3">
-        <div class="btn btn-primary"><i class="text-lg fa-light fa-edit"></i></div>
+        <div class="btn btn-primary" (click)="edit(item)"><i class="text-lg fa-light fa-edit"></i></div>
         <div (click)="remove(item.id)" class="btn btn-primary"><i class="text-lg fa-light fa-trash-alt"></i></div>
         <div [routerLink]="['details/' , item.id]" class="btn btn-primary"><i class="text-lg fa-light fa-eye"></i></div>
       </div>

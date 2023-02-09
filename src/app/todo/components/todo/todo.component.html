@@ -3,7 +3,7 @@
     <div class="header flex justify-between items-center pb-5 mb-5 border-b">
       <h2 class="flex text-2xl title_font text-gray-700 m-0">لیست کارا</h2>
     </div>
-    <app-form></app-form>
-    <app-list></app-list>
+    <app-form [todo]="todoParent"></app-form>
+    <app-list (onEdit)="edit($event)"></app-list>
   </div>
 </section>

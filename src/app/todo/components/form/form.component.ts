@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {TodoService} from "../../../services/todo.service";
 
 @Component({
@@ -7,14 +7,25 @@ import {TodoService} from "../../../services/todo.service";
   styleUrls: ['./form.component.scss']
 })
 export class FormComponent implements OnInit {
-  todo:any = {
+  @Input() todo:any = {
     id:0,
     title:"",
     description:"",
     date: "",
     time: "",
   };
-  constructor(private TodoService:TodoService) { };
+  constructor(private TodoService:TodoService) {
+
+    this.TodoService.onChanged.subscribe(
+      response=>{
+        if(response){
+          this.todo=response
+        }
+
+        console.log('555-',response)
+      }
+    )
+  };
 
   submit() {
     this.todo.id = this.todo.id +1;

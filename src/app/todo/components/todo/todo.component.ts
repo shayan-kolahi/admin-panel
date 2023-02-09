@@ -6,10 +6,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./todo.component.scss']
 })
 export class TodoComponent implements OnInit {
-
+  todoParent:any = {
+    id:0,
+    title:"",
+    description:"",
+    date: "",
+    time: "",
+  };
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  edit(event:any){
+    this.todoParent=event;
   }
 
 }
