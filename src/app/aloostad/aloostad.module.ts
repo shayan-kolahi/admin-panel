@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AloostadRoutingModule } from './aloostad-routing.module';
-import { AloostadComponent } from './component/aloostad/aloostad.component';
+import { AloostadComponent } from './components/aloostad/aloostad.component';
 import {ShareModule} from "../share/share.module";
 import {AloostadService} from "../services/aloostad.service";
 @NgModule({

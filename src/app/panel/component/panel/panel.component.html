@@ -1,9 +1,0 @@
-<!--<span app-shayan>asdasda</span>-->
-<app-sidebar [class]="isActive_sidebar ? 'right-0' : 'right-[-300px] xl:right-[-20%]'" class="transition-all sidebar fixed top-0 bottom-0 p-2 w-[300px] xl:w-[20%] z-10 overflow-y-auto text-center bg-gray-900"></app-sidebar>
-<main [class]="isActive_sidebar ? 'w-full xl:w-[80%]' : 'w-[100%]'" class="transition-all mr-auto">
-  <app-header (status_sidebar)="status_sidebar($event)"></app-header>
-  <section class="min-h-screen relative">
-    <router-outlet></router-outlet>
-  </section>
-  <app-footer></app-footer>
-</main>

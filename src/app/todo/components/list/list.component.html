@@ -1,0 +1,23 @@
+<div class="mt-10">
+  <ng-container *ngIf="amir === false">
+    <img class="w-96 h-96 m-auto" src="../../../../assets/images/no-result.jpg" alt="no-result">
+  </ng-container>
+  <ng-container *ngIf="amir !== false">
+    <div *ngFor="let item of amir" class="p-5 rounded-md border bg-white w-full mt-4 flex flex-wrap justify-between">
+      <div>
+        <h2 class="limitText_h2 flex text-xl title_font text-gray-600 mb-4">{{item.title}}</h2>
+        <p class="limitText_p flex text-lg text-gray-400 mb-4">{{item.description}}</p>
+        <div>
+          <span class="text-gray-400">{{item.time}}</span>
+          <i class="text-xs text-gray-300	mx-4 fa-solid fa-circle"></i>
+          <span class="text-gray-400">{{item.date}}</span>
+        </div>
+      </div>
+      <div class="flex md:flex-col mt-5 md:mt-0 justify-center w-full md:w-auto gap-3">
+        <div class="btn btn-primary"><i class="text-lg fa-light fa-edit"></i></div>
+        <div (click)="remove(item.id)" class="btn btn-primary"><i class="text-lg fa-light fa-trash-alt"></i></div>
+        <div [routerLink]="['details/' , item.id]" class="btn btn-primary"><i class="text-lg fa-light fa-eye"></i></div>
+      </div>
+    </div>
+  </ng-container>
+</div>

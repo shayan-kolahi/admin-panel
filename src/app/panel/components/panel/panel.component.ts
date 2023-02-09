@@ -9,7 +9,7 @@ export class PanelComponent implements OnInit {
   constructor() { }
   isActive_sidebar : boolean = true;
   ngOnInit(): void {
-    if(window.innerWidth < 1024){
+    if(window.innerWidth < 1200){
       this.isActive_sidebar = false
     }
   }

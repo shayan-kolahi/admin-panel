@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {AloostadComponent} from "./component/aloostad/aloostad.component";
+import {AloostadComponent} from "./components/aloostad/aloostad.component";
 
 const routes: Routes = [
   {path: "", component: AloostadComponent,title: "AdminPanel | Aloostad"},

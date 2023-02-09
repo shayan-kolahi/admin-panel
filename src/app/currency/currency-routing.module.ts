@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {CurrencyComponent} from "./component/currency/currency.component";
-import {DetailsComponent} from "./component/details/details.component";
+import {CurrencyComponent} from "./components/currency/currency.component";
+import {DetailsComponent} from "./components/details/details.component";
 
 const routes: Routes = [
   {path: "", component: CurrencyComponent,title: "AdminPanel | Currency"},

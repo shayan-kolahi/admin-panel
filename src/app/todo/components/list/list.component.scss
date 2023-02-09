@@ -1,0 +1,36 @@
+.limitText_h2{
+  overflow: hidden;
+  width:500px;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+.limitText_p{
+  overflow: hidden;
+  width:500px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+.limitText_h2{
+  overflow: hidden;
+  width:500px;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+.limitText_p{
+  overflow: hidden;
+  width:500px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+@media (max-width: 768px) {
+  .limitText_h2{
+    width:100%;
+  }
+  .limitText_p{
+    width:100%;
+  }
+}

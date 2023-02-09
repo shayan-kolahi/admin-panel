@@ -18,7 +18,16 @@ export class BitmaxComponent implements OnInit , OnDestroy{
       complete: () => console.log('complete')
     })
     this.api.next({"event":"market","data":"BTC-USDT"})
+    setTimeout(() => {
+      this.api.next({"event": "ping", "data": ""})
+    }, 10000)
   }
+
+  Interval(){
+    setInterval(() => {} , 10000)
+  }
+
+
   ngOnDestroy() {
     this.api.unsubscribe();
   }

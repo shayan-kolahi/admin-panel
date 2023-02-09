@@ -6,7 +6,12 @@ import {Component, OnInit} from '@angular/core';
 })
 export class AppComponent implements OnInit {
   constructor() {}
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.warn("we have no auth")
+    console.error("we have no auth")
+    console.warn("we have no auth")
+    alert("we have no auth")
+  }
 
 
 
