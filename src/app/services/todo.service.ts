@@ -7,6 +7,8 @@ import {BehaviorSubject} from "rxjs";
 export class TodoService {
   onChanged: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
+  shayan:string='shayan1'
+
   constructor() {
   }
 

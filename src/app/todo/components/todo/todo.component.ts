@@ -13,9 +13,14 @@ export class TodoComponent implements OnInit {
     date: "",
     time: "",
   };
+  amirParent:string='aaaa'
+
   constructor() { }
 
   ngOnInit(): void {
+    setTimeout(()=>{
+      this.amirParent='shayan'
+    },5000)
   }
 
   edit(event:any){
