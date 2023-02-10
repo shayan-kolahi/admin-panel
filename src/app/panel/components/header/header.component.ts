@@ -16,7 +16,6 @@ export class HeaderComponent implements OnInit{
   ngOnInit(): void {
     if(window.innerWidth < 1024){
       this.isActive = false
-      console.log("asd")
     }
   }
   click_status() {

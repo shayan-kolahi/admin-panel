@@ -1,12 +1,13 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {BehaviorSubject} from "rxjs";
 
 @Injectable({
-  providedIn:TodoService
+  providedIn: TodoService
 })
 export class TodoService {
-  onChanged: BehaviorSubject<any>           = new BehaviorSubject<any>(null);
+  onChanged: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
-  constructor() { }
+  constructor() {
+  }
 
 }

@@ -1,2 +1,13 @@
-<app-loader *ngIf="loader"></app-loader>
-<p *ngIf="!loader">bitmax works!</p>
+<section class="p-5">
+  <div appBox>
+    <div class="header flex justify-between items-center pb-5 mb-5 border-b">
+      <h2 class="flex text-2xl title_font text-gray-700 m-0">صرافی بیتمکس</h2>
+    </div>
+    <ng-container *ngIf="loader">
+      <app-Spinner_loader></app-Spinner_loader>
+    </ng-container>
+    <ng-container *ngIf="!loader">
+      <p>bitmax works!</p>
+    </ng-container>
+  </div>
+</section>
