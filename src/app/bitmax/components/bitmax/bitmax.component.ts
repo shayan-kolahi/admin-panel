@@ -21,15 +21,17 @@ export class BitmaxComponent implements OnInit , OnDestroy{
   }
   subscribe(){
     this.BitmaxService.getData().subscribe({
-      next:data => {this.data = data;this.loader = false;},
-      error: err => console.log(err),
+      next:(data:any) => {this.data = data;this.loader = false;},
+      error: (err:any) => console.log(err),
       complete: () => console.log('complete')
     })
   }
   ping(){
     this.interval_ping_unsubscribe$ = this.interval_ping$.subscribe(x => {
-      console.log("asd",x)
+      console.log("asd",x);
+      this.BitmaxService.getData(true);
     });
+
   }
   ngOnDestroy() {
     this.BitmaxService.getData().unsubscribe();
