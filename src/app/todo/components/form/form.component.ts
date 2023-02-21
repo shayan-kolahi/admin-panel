@@ -1,114 +1,108 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {TodoService} from "../../../services/todo.service";
 
 @Component({
-             selector   : 'app-form',
-             templateUrl: './form.component.html',
-             styleUrls  : ['./form.component.scss']
-           })
-export class FormComponent implements OnInit
-{
-  @Input() todo: any = {
-    id         : 0,
-    title      : "",
+  selector: 'app-form',
+  templateUrl: './form.component.html',
+  styleUrls: ['./form.component.scss']
+})
+export class FormComponent implements OnInit {
+  @ViewChild('input') private input : ElementRef
+  @ViewChild('textarea') private textarea : ElementRef
+  @ViewChild('form') private form : ElementRef
+
+  change_submit_button:boolean = false;
+  todo: any = {
+    id: 0,
+    title: "",
     description: "",
-    date       : "",
-    time       : "",
+    date: "",
+    time: "",
   };
-
-  protected _amir: string = 'aaaaa';
-
-  @Input()
-  set amir(value: string)
-  {
-    console.log('changes',value)
-    this._amir = value;
-  }
-
-  get amir(): string
-  {
-    return this._amir
-  }
-
-
-  get shayan():string{
-    return this.TodoService.shayan;
-  }
-
-
-
-  constructor(private TodoService: TodoService)
-  {
-
-    this.TodoService.onChanged.subscribe(
+  data_edit:any;
+  constructor(private TodoService: TodoService) {
+    this.TodoService.onChanged_edit.subscribe(
       response => {
-        if (response)
-        {
-          this.todo = response
+        if (response !== null) {
+          this.change_submit_button = true;
+          this.data_edit = response;
+          this.todo.id = response.id;
+          this.todo.title = response.title;
+          this.todo.description = response.description;
+          this.form.nativeElement.scrollIntoView({behavior: 'smooth',})
+          this.input.nativeElement.classList.add("bg-blue-200")
+          this.textarea.nativeElement.classList.add("bg-blue-200")
         }
-
-        console.log('555-', response)
       }
     )
   };
 
-  submit()
-  {
-    this.todo.id = this.todo.id + 1;
-    this.value_date_time();
-    this.localStorage_value();
+  // edit
+  submit_edit() {
+    let local = JSON.parse(<any>localStorage.getItem("todo"))
+    this.change_submit_button = false;
+    local.forEach((item:any) => {
+      if (item.id == this.data_edit.id){
+        item.title = this.todo.title;
+        item.description = this.todo.description;
+      }
+    })
+    this.input.nativeElement.classList.remove("bg-blue-200")
+    this.textarea.nativeElement.classList.remove("bg-blue-200")
+    localStorage.setItem("todo", JSON.stringify(local))
+    this.TodoService.onChanged.next(JSON.parse(<any>localStorage.getItem("todo")));
     this.remove_value();
   }
+  // edit
 
-  value_date_time()
-  {
-    this.todo.date = new Date().toLocaleDateString('fa-IR');
-    this.todo.time = new Date().toLocaleTimeString('fa-IR');
-  };
-
-  remove_value()
-  {
-    this.todo.title       = "";
-    this.todo.description = "";
-    this.todo.date        = ""
-    this.todo.time        = "";
-  };
-
-  localStorage_value()
-  {
-    let local = JSON.parse(<any>localStorage.getItem("todo"));
-    if (Array.isArray(local))
-    {
+  // submit
+  submit() {
+    if (this.todo.title === ""){
+      this.input.nativeElement.classList.add("border-pink-700")
+    } else if( this.todo.description === "") {
+      this.textarea.nativeElement.classList.add("border-pink-700");
+    } else {
+      this.value_date_time();
+      this.localStorage_value();
+      this.TodoService.onChanged.next(JSON.parse(<any>localStorage.getItem("todo")));
+      this.remove_value();
+    }
+  }
+  localStorage_value() {
+    let local = JSON.parse(<any>localStorage.getItem("todo"))
+    if (Array.isArray(local) && local.length > 0) {
+      this.todo.id = local[0].id + 1;
       local.unshift(this.todo);
       localStorage.setItem("todo", JSON.stringify(local))
-    }
-    else
-    {
+    } else {
+      this.todo.id = 1;
       let arr = [this.todo];
       localStorage.setItem("todo", JSON.stringify(arr))
     }
   };
-
-  // openTextarea
-  isTextarea: boolean = false;
-
-  openTextarea(e: any)
-  {
-    this.isTextarea = true;
-    e.stopPropagation();
+  value_date_time() {
+    this.todo.date = new Date().toLocaleDateString('fa-IR');
+    this.todo.time = new Date().toLocaleTimeString('fa-IR');
   };
+  // submit
 
-  ngOnInit(): void
-  {
-    document.body.addEventListener('click', () => {
-      this.isTextarea = false
-    })
-
-    setTimeout(()=>{
-      this.TodoService.shayan='shayan22222'
-    },5000)
+  remove_value() {
+    this.todo.id = "";
+    this.todo.title = "";
+    this.todo.description = "";
+    this.todo.date = ""
+    this.todo.time = "";
   };
-
-  // openTextarea
-
+  removeBorderPink(e:string) {
+    if(e === "input"){
+      this.input.nativeElement.classList.remove("border-pink-700")
+    } else {
+      this.textarea.nativeElement.classList.remove("border-pink-700")
+    }
+  }
+  ngOnInit(): void {};
+  ngOnDestroy() {
+    this.remove_value();
+    this.change_submit_button = false;
+  }
 }

@@ -47,4 +47,11 @@ export class AppService {
       }
     })
   }
+  fire(title:string,text:string){
+    this.Toast.fire({
+      icon: 'error',
+      title: title,
+      text: text,
+    })
+  }
 }

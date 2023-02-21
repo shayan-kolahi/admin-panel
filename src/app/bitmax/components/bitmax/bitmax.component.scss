@@ -1,0 +1,19 @@
+:where(.table *:first-child) :where(*:first-child) :where(th, td):first-child {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+:where(.table *:first-child) :where(*:first-child) :where(th, td):last-child {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+}
+
+
+
+:where(.table *:last-child) :where(*:last-child) :where(th, td):last-child {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0.5rem;
+}
+:where(.table *:last-child) :where(*:last-child) :where(th, td):first-child {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0.5rem;
+}

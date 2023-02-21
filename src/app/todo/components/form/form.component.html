@@ -1,9 +1,8 @@
-<h1>{{amir}}</h1>
-<h1>{{shayan}}</h1>
-<div class="relative flex items-center flex-col">
+<div class="relative flex items-center flex-col" #form>
   <input type="text"
-         (click)="openTextarea($event)"
+         (keydown)="removeBorderPink('input')"
          [(ngModel)]="todo.title"
+         #input
          placeholder="اضافه کردن آیتم جدید ..."
          class="p-2.5
                 text-lg
@@ -13,18 +12,23 @@
                 w-full
                 h-14">
   <textarea name=""
-            (click)="openTextarea($event)"
+            (keydown)="removeBorderPink('textarea')"
             [(ngModel)]="todo.description"
+            #textarea
             placeholder="اضافه کردن توضیحات به آیتم جدید ..."
-            class=" text-lg
+            class="text-lg
                 rounded-lg
                 w-full
                 transition-all
                 focus:outline-none
                 outline-none
-                resize-none"
-            [class]="isTextarea ? 'h-40 p-2.5 border mt-3' : 'h-0 p-0'">
+                resize-none
+                h-40
+                p-2.5
+                border
+                mt-3">
   </textarea>
-  <button (click)="submit()" appButton class="absolute left-1 top-1">ثبت</button>
+  <button *ngIf="!change_submit_button" (click)="submit()" appButton class="absolute left-1 top-1">ثبت</button>
+  <button *ngIf="change_submit_button" (click)="submit_edit()" appButton class="absolute bg-emerald-500 left-1 top-1">اعمال</button>
 
 </div>

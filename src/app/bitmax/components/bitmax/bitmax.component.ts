@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import {BitmaxService} from "../../../services/bitmax.service";
 import {interval} from "rxjs";
+import {AppService} from "../../../services/app.service";
+
 
 @Component({
   selector: 'app-bitmax',
@@ -9,10 +11,10 @@ import {interval} from "rxjs";
 })
 export class BitmaxComponent implements OnInit , OnDestroy{
 
-  constructor(private BitmaxService:BitmaxService) { }
+  constructor(private BitmaxService:BitmaxService,private AppService:AppService,) { }
   loader:boolean = true;
-  ws : any = this.BitmaxService.getData()
   data:any;
+  data_name:any;
   interval_ping$ = interval(10000);
   interval_ping_unsubscribe$:any;
   ngOnInit(): void {
@@ -21,20 +23,25 @@ export class BitmaxComponent implements OnInit , OnDestroy{
   }
   subscribe(){
     this.BitmaxService.getData().subscribe({
-      next:(data:any) => {this.data = data;this.loader = false;},
-      error: (err:any) => console.log(err),
+      next:(data:any) => {
+        this.loader = false;
+        if(data.pong == null){
+          this.data = data
+          this.data_name = this.data.m.n.split("-")
+        }
+      },
+      error: (err:any) => {this.AppService.Swal_reload();},
       complete: () => console.log('complete')
     })
   }
   ping(){
     this.interval_ping_unsubscribe$ = this.interval_ping$.subscribe(x => {
-      console.log("asd",x);
       this.BitmaxService.getData(true);
     });
 
   }
   ngOnDestroy() {
-    this.BitmaxService.getData().unsubscribe();
+    this.BitmaxService.socketSubject.unsubscribe();
     this.interval_ping_unsubscribe$.unsubscribe()
   }
 }

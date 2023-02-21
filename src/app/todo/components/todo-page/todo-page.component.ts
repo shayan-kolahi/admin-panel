@@ -7,19 +7,16 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./todo-page.component.scss']
 })
 export class TodoPageComponent implements OnInit {
-  aasd:number;
+  getIdTodo:number;
+  data:any;
   constructor(private getId: ActivatedRoute,) {
     this.getId.params.subscribe((params) => {
-      this.aasd = Number(params["id"]);
-      console.log(this.amir)
-      console.log(this.amir.filter((res:any) => res.id === this.aasd))
-      console.log(this.aasd)
+      this.getIdTodo = Number(params["id"]);
     })
   }
-  get amir (){
-      return JSON.parse(<any>localStorage.getItem("todo"))
-  }
   ngOnInit(): void {
+    let local = JSON.parse(<any>localStorage.getItem("todo"))
+    this.data = local.filter((res:any) => res.id === this.getIdTodo)
   }
 
 }

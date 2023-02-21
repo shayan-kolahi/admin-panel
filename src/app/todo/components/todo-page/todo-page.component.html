@@ -1,20 +1,15 @@
 <section class="p-5">
-<!--  <div appBox>-->
-<!--    <div class="header flex justify-between items-center pb-5 mb-5 border-b">-->
-<!--      <h2 class="flex text-2xl title_font text-gray-700 m-0 flex-col">-->
-<!--        {{todoStorage[0].title}}-->
-<!--        <div>-->
-<!--          <span class="text-sm text-gray-400">{{todoStorage[0].time}}</span>-->
-<!--          <i class="text-xs text-gray-300	mx-4 fa-solid fa-circle"></i>-->
-<!--          <span class="text-sm text-gray-400">{{todoStorage[0].date}}</span>-->
-<!--        </div>-->
-<!--      </h2>-->
-<!--      <button appButton routerLink="/todo">لیست همه کارا</button>-->
-<!--    </div>-->
-
-<!--    <p class="text-gray-400 text-base text-justify">-->
-<!--      {{todoStorage[0].description}}-->
-<!--    </p>-->
-
-<!--  </div>-->
+  <div appBox>
+    <div class="header flex justify-between items-center pb-5 mb-5 border-b">
+      <h2 class="flex text-2xl title_font text-gray-700 m-0">جزییات</h2>
+      <button routerLink="/todo" appButton>لیست کارا</button>
+    </div>
+    <h4 class="flex text-xl title_font text-gray-600 mb-4 text-justify">{{data[0].title}}</h4>
+    <div class="mb-4">
+      <span class="text-gray-400">{{data[0].time}}</span>
+      <i class="text-xs text-gray-300	mx-4 fa-solid fa-circle"></i>
+      <span class="text-gray-400">{{data[0].date}}</span>
+    </div>
+    <p class="flex text-lg text-gray-400 mb-0 text-justify">{{data[0].description}}</p>
+  </div>
 </section>
