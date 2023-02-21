@@ -15,7 +15,6 @@ const routes: Routes = [
       {path: "blog", loadChildren: () => import('../blog/blog.module').then(m => m.BlogModule)},
       {path: "aloostad", loadChildren: () => import('../aloostad/aloostad.module').then(m => m.AloostadModule)},
       {path: "bitmax", loadChildren: () => import('../bitmax/bitmax.module').then(m => m.BitmaxModule)},
-      {path: "convertio", loadChildren: () => import('../convertio/convertio.module').then(m => m.ConvertioModule)},
       {path: "Observable", loadChildren: () => import('../observable/observable.module').then(m => m.ObservableModule)},
     ]
   },
