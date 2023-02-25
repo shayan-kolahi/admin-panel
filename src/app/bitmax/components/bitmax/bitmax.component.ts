@@ -44,4 +44,9 @@ export class BitmaxComponent implements OnInit , OnDestroy{
     this.BitmaxService.socketSubject.unsubscribe();
     this.interval_ping_unsubscribe$.unsubscribe()
   }
+
+  change_market(id:string) {
+    console.log(id)
+    this.BitmaxService.socketSubject.next({"event": "market", "data": id})
+  }
 }

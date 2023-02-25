@@ -6,9 +6,6 @@
   border-top-right-radius: 0;
   border-top-left-radius: 0;
 }
-
-
-
 :where(.table *:last-child) :where(*:last-child) :where(th, td):last-child {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0.5rem;
@@ -16,4 +13,15 @@
 :where(.table *:last-child) :where(*:last-child) :where(th, td):first-child {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0.5rem;
+}
+.bg-blue-300_hover td{
+  transition: all .3s;
+}
+.bg-blue-300_hover:hover td{
+  color: #fff;
+  background: rgb(147 197 253 / 1) !important;
+}
+.bg-active td {
+  color: #fff;
+  background: rgb(147 197 253 / 1) !important;
 }

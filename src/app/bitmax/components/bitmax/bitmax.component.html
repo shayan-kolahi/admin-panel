@@ -67,7 +67,8 @@
             </tr>
             </thead>
             <tbody class="active w-full">
-            <tr *ngFor="let item of data.M" class="h-2 w-full">
+            <tr *ngFor="let item of data.M" (click)="change_market(item.id)" class="cursor-pointer bg-blue-300_hover h-2 w-full"
+            [class]="item.id == data.m.n ? 'bg-active' : ''">
               <td>{{item.n.fa}}</td>
               <td class="EN_direction">{{item.pp}} %</td>
               <td>{{(item.lp).toFixed(2)}}</td>

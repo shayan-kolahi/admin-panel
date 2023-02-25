@@ -18,5 +18,4 @@ export class TodoPageComponent implements OnInit {
     let local = JSON.parse(<any>localStorage.getItem("todo"))
     this.data = local.filter((res:any) => res.id === this.getIdTodo)
   }
-
 }

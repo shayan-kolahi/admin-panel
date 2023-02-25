@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
 import {TodoService} from "../../../services/todo.service";
 
 @Component({
@@ -6,7 +6,7 @@ import {TodoService} from "../../../services/todo.service";
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss']
 })
-export class FormComponent implements OnInit {
+export class FormComponent implements AfterViewInit {
   @ViewChild('input') private input : ElementRef
   @ViewChild('textarea') private textarea : ElementRef
   @ViewChild('form') private form : ElementRef
@@ -20,22 +20,8 @@ export class FormComponent implements OnInit {
     time: "",
   };
   data_edit:any;
-  constructor(private TodoService: TodoService) {
-    this.TodoService.onChanged_edit.subscribe(
-      response => {
-        if (response !== null) {
-          this.change_submit_button = true;
-          this.data_edit = response;
-          this.todo.id = response.id;
-          this.todo.title = response.title;
-          this.todo.description = response.description;
-          this.form.nativeElement.scrollIntoView({behavior: 'smooth',})
-          this.input.nativeElement.classList.add("bg-blue-200")
-          this.textarea.nativeElement.classList.add("bg-blue-200")
-        }
-      }
-    )
-  };
+  unSubscribe_onChanged_edit:any;
+  constructor(private TodoService: TodoService) {};
 
   // edit
   submit_edit() {
@@ -100,9 +86,23 @@ export class FormComponent implements OnInit {
       this.textarea.nativeElement.classList.remove("border-pink-700")
     }
   }
-  ngOnInit(): void {};
-  ngOnDestroy() {
-    this.remove_value();
-    this.change_submit_button = false;
+  ngOnDestroy(): void {
+    this.TodoService.onChanged_edit.next(null);
+  }
+  ngAfterViewInit() {
+    this.unSubscribe_onChanged_edit =  this.TodoService.onChanged_edit.subscribe(
+      response => {
+        if (response) {
+          this.change_submit_button = true;
+          this.data_edit = response;
+          this.todo.id = response.id;
+          this.todo.title = response.title;
+          this.todo.description = response.description;
+          this.form.nativeElement.scrollIntoView({behavior: 'smooth',})
+          this.input.nativeElement.classList.add("bg-blue-200")
+          this.textarea.nativeElement.classList.add("bg-blue-200")
+        }
+      }
+    )
   }
 }
