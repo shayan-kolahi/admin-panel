@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
+import {todo} from "../../../interface/todo";
 
 @Component({
   selector: 'app-todo-page',
@@ -16,6 +17,6 @@ export class TodoPageComponent implements OnInit {
   }
   ngOnInit(): void {
     let local = JSON.parse(<any>localStorage.getItem("todo"))
-    this.data = local.filter((res:any) => res.id === this.getIdTodo)
+    this.data = local.filter((res:todo) => res.id === this.getIdTodo)
   }
 }

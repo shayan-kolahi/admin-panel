@@ -60,6 +60,11 @@ export class SidebarComponent implements OnInit {
       icon : 'fa-sparkles',
       link : "/bitmax"
     },
+    {
+      text : 'بیتمکس 2',
+      icon : 'fa-sparkles',
+      link : "/bitmax2"
+    },
   ]
 
 

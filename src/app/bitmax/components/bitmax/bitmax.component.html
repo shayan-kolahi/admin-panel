@@ -10,24 +10,24 @@
       <div class="border p-5 rounded-md grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
         <h3 class="border-l p-3 block text-xl title_font text-gray-500 m-0">{{data.m.n}}</h3>
         <div class="lg:border-l xl:border-none flex flex-col justify-center items-center">
-          <h6 class="flex text-lg text-gray-500 mb-2">{{(data.m.s.lo).toFixed(2)  | number: '3.'}}</h6>
+          <h6 class="flex text-lg text-gray-500 mb-2">{{(data.m.s.lo).toFixed(2)  | number}}</h6>
           <span class="flex text-sm text-gray-400 mb-0">{{data.m.s.pp}}%</span>
         </div>
         <div class="border-l lg:border-none flex flex-col justify-center items-center">
           <h6 class="flex text-xs text-gray-400 mb-2">بالاترین</h6>
-          <span class="flex text-sm text-gray-500 mb-0">{{(data.m.s.map24).toFixed(2)  | number: '3.'}}</span>
+          <span class="flex text-sm text-gray-500 mb-0">{{(data.m.s.map24).toFixed(2)  | number}}</span>
         </div>
         <div class="lg:border-l xl:border-none flex flex-col justify-center items-center">
           <h6 class="flex text-xs text-gray-400 mb-2">پایین ترین</h6>
-          <span class="flex text-sm text-gray-500 mb-0">{{(data.m.s.mip24).toFixed(2)  | number: '3.'}}</span>
+          <span class="flex text-sm text-gray-500 mb-0">{{(data.m.s.mip24).toFixed(2)  | number}}</span>
         </div>
         <div class="border-l xl:border-none flex flex-col justify-center items-center">
           <h6 class="flex text-xs text-gray-400 mb-2"> حجم معاملات {{data_name[0]}}</h6>
-          <span class="flex text-sm text-gray-500 mb-0">{{(data.m.s.sa24).toFixed(2)  | number: '3.'}}</span>
+          <span class="flex text-sm text-gray-500 mb-0">{{(data.m.s.sa24).toFixed(2)  | number}}</span>
         </div>
         <div class="flex flex-col justify-center items-center">
           <h6 class="flex text-xs text-gray-400 mb-2"> حجم معاملات {{data_name[1]}}</h6>
-          <span class="flex text-sm text-gray-500 mb-0">{{(data.m.s.sp24).toFixed(2)  | number: '3.'}}</span>
+          <span class="flex text-sm text-gray-500 mb-0">{{(data.m.s.sp24).toFixed(2)  | number}}</span>
         </div>
       </div>
       <div class="grid md:grid-cols-1 lg:grid-cols-2 gap-4 mt-5">
@@ -49,9 +49,9 @@
             </thead>
             <tbody class="active w-full">
             <tr *ngFor="let item of data.m.a" class="h-2 w-full">
-              <td>{{(item.p).toFixed(2) | number: '3.'}}</td>
+              <td>{{(item.p).toFixed(2) | number}}</td>
               <td>{{(item.a).toFixed(2)}}</td>
-              <td>{{(item.a * item.p).toFixed(2)  | number: '3.'}}</td>
+              <td>{{(item.a * item.p).toFixed(2)  | number}}</td>
             </tr>
             </tbody>
           </table>
@@ -94,9 +94,9 @@
             </thead>
             <tbody class="active w-full">
             <tr *ngFor="let item of data.m.b" class="h-2 w-full">
-              <td>{{(item.p).toFixed(2) | number: '3.'}}</td>
+              <td>{{(item.p).toFixed(2) | number}}</td>
               <td>{{(item.a).toFixed(2)}}</td>
-              <td>{{(item.a * item.p).toFixed(2)  | number: '3.'}}</td>
+              <td>{{(item.a * item.p).toFixed(2)  | number}}</td>
             </tr>
             </tbody>
           </table>
@@ -116,7 +116,7 @@
             </thead>
             <tbody class="active w-full">
             <tr *ngFor="let item of data.m.f" class="h-2 w-full">
-              <td>{{(item.p).toFixed(2) | number: '3.'}}</td>
+              <td>{{(item.p).toFixed(2) | number}}</td>
               <td>{{(item.a).toFixed(2)}}</td>
               <td>{{(item.t | date: 'h:mm:ss a')}}</td>
             </tr>

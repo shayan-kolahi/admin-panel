@@ -1,6 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import Swal from "sweetalert2";
 import {TodoService} from "src/app/services/todo.service";
+import {todo} from "../../../interface/todo";
 
 @Component({
   selector: 'app-list',
@@ -20,7 +21,7 @@ export class ListComponent implements OnInit {
       }
     )
   }
-  edit(item: any , e:any) {
+  edit(item: todo , e:any) {
     this.TodoService.onChanged_edit.next(item);
     e.stopPropagation();
   }
@@ -46,7 +47,7 @@ export class ListComponent implements OnInit {
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
-        let removeItem = JSON.parse(<any>localStorage.getItem("todo")).filter((res: any) => res.id !== id)
+        let removeItem = JSON.parse(<any>localStorage.getItem("todo")).filter((res: todo) => res.id !== id)
         localStorage.setItem("todo", JSON.stringify(removeItem))
         this.TodoService.onChanged.next(JSON.parse(<any>localStorage.getItem("todo")));
       }

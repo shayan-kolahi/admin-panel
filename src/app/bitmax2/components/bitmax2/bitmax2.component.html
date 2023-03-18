@@ -1,0 +1,75 @@
+<section class="p-5">
+  <div appBox>
+    <div class="header flex justify-between items-center pb-5 mb-5 border-b">
+      <h2 class="flex text-2xl title_font text-gray-700 m-0">صرافی بیتمکس</h2>
+    </div>
+    <ng-container *ngIf="status === 'error'">
+      <app-Spinner_error></app-Spinner_error>
+    </ng-container>
+    <ng-container *ngIf="status === 'loading'">
+      <app-Spinner_loader></app-Spinner_loader>
+    </ng-container>
+    <ng-container *ngIf="status === 'success'">
+      <div class="flex justify-between items-center w-full gap-2 responsive_styles_header">
+        <input [(ngModel)]="term" type="text" placeholder="جستجوی ارز" class="input input-bordered w-full max-w-xs" />
+        <div class="btn-group EN_direction">
+          <button (click)="change_check_price('irt')" class="btn" [class]="check_price ? 'btn-active' : ''">تومان IRT</button>
+          <button (click)="change_check_price('usdt')" class="btn" [class]="!check_price ? 'btn-active' : ''">تتر USDT</button>
+        </div>
+      </div>
+      <div class="mt-5">
+        <table class="table w-full text-right overflow-x-auto">
+          <thead class="sticky top-0 z-50 w-full">
+          <tr class="responsive_styles">
+            <td class="bg-blue-500 text-base normal-case font-normal text-white"><i class="fa-solid fa-hashtag"></i></td>
+            <td class="bg-blue-500 text-base normal-case font-normal text-white">نام</td>
+            <td class="bg-blue-500 text-base normal-case font-normal text-white">
+              آخرین قیمت
+              ( {{check_price ? 'تومان' : 'تتر'}} )
+            </td>
+            <td class="bg-blue-500 text-base normal-case font-normal text-white">تغییر 24h</td>
+            <td class="bg-blue-500 text-base normal-case font-normal text-white">حجم معاملات 24h</td>
+            <td class="bg-blue-500 text-base normal-case font-normal text-white"> نمودار هفتگی</td>
+            <td class="bg-blue-500 text-base normal-case font-normal text-white"></td>
+          </tr>
+          </thead>
+          <tbody class="active w-full">
+          <tr class="h-2 w-full responsive_styles" *ngFor="let item of result|searchSymbol:term;let i = index;">
+            <td>{{i + 1}}</td>
+            <td>
+              <div class="flex gap-3 items-center">
+                <img src='https://bitmax.ir/assets/images/coin-icons/{{item.symbol}}.svg' [alt]="item.symbol">
+                <div>
+                  <span class="flex text-sm text-gray-400 mb-2">{{item.name.fa}}</span>
+                  <h6 class="flex text-lg text-gray-500 mb-0">{{item.symbol}}</h6>
+                </div>
+              </div>
+            </td>
+            <td>
+              <h6 class="flex items-end text-lg text-gray-500 mb-0">
+                {{(check_price ? item.last_price_irt : item.last_price).toFixed(2) | number}}
+              </h6>
+            </td>
+            <td>
+              <h6 class="flex text-lg text-gray-500 mb-0 EN_direction justify-end"
+                  [class]="item.price_change_percent < 0 ? 'text-red-500' : 'text-green-500 font-semibold'">
+                  {{item.price_change_percent}}%</h6>
+            </td>
+            <td>
+              <h6 class="flex items-end text-lg text-gray-500 mb-0">
+                {{(check_price ? item.volume_irt : item.volume).toFixed(2) | number}}
+              </h6>
+            </td>
+            <td>
+              <img [src]="item.chart_url" [alt]="item.symbol">
+            </td>
+            <td>
+              <button class="btn btn-outline">بیشتر</button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </ng-container>
+  </div>
+</section>

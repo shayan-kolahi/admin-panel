@@ -1,0 +1,36 @@
+:where(.table *:first-child) :where(*:first-child) :where(th, td):first-child {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0.5rem;
+}
+:where(.table *:first-child) :where(*:first-child) :where(th, td):last-child {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0.5rem;
+}
+@media (max-width:992px) {
+  .responsive_styles > td:nth-child(6){
+    display: none;
+  }
+}
+@media (max-width:850px) {
+  .responsive_styles > td:nth-child(5),
+  .responsive_styles > td:nth-child(4){
+    display: none;
+  }
+}
+@media (max-width:600px) {
+  .responsive_styles > td:nth-child(3){
+    display: none;
+  }
+  .responsive_styles_header{
+    flex-direction: column;
+  }
+  .responsive_styles_header > div{
+    width: 100%;
+  }
+  .responsive_styles_header > div > button {
+    width: 50%;
+  }
+  .responsive_styles_header > input{
+    max-width: 100%;
+  }
+}

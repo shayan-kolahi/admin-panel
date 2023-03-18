@@ -1,5 +1,6 @@
 import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
 import {TodoService} from "../../../services/todo.service";
+import {todo} from "../../../interface/todo";
 
 @Component({
   selector: 'app-form',
@@ -12,7 +13,7 @@ export class FormComponent implements AfterViewInit {
   @ViewChild('form') private form : ElementRef
 
   change_submit_button:boolean = false;
-  todo: any = {
+  todo: todo = {
     id: 0,
     title: "",
     description: "",
@@ -27,7 +28,7 @@ export class FormComponent implements AfterViewInit {
   submit_edit() {
     let local = JSON.parse(<any>localStorage.getItem("todo"))
     this.change_submit_button = false;
-    local.forEach((item:any) => {
+    local.forEach((item:todo) => {
       if (item.id == this.data_edit.id){
         item.title = this.todo.title;
         item.description = this.todo.description;
@@ -73,7 +74,7 @@ export class FormComponent implements AfterViewInit {
   // submit
 
   remove_value() {
-    this.todo.id = "";
+    this.todo.id = NaN;
     this.todo.title = "";
     this.todo.description = "";
     this.todo.date = ""
