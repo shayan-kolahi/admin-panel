@@ -9,13 +9,12 @@ const routes: Routes = [
     children: [
       {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
       {path: "dashboard", loadChildren: () => import('../dashboard/dashboard.module').then(m => m.DashboardModule)},
-      {path: "currency", loadChildren: () => import('../currency/currency.module').then(m => m.CurrencyModule)},
+      {path: "info_currency", loadChildren: () => import('../info_currency/info_currency.module').then(m => m.Info_currencyModule)},
       {path: "weather", loadChildren: () => import('../weather/weather.module').then(m => m.WeatherModule)},
       {path: "todo", loadChildren: () => import('../todo/todo.module').then(m => m.TodoModule)},
-      {path: "blog", loadChildren: () => import('../blog/blog.module').then(m => m.BlogModule)},
       {path: "aloostad", loadChildren: () => import('../aloostad/aloostad.module').then(m => m.AloostadModule)},
-      {path: "bitmax", loadChildren: () => import('../bitmax/bitmax.module').then(m => m.BitmaxModule)},
-      {path: "bitmax2", loadChildren: () => import('../bitmax2/bitmax2.module').then(m => m.Bitmax2Module)},
+      {path: "exchange", loadChildren: () => import('../exchange/exchange.module').then(m => m.ExchangeModule)},
+      {path: "market", loadChildren: () => import('../market/market.module').then(m => m.MarketModule)},
       {path: "Observable", loadChildren: () => import('../observable/observable.module').then(m => m.ObservableModule)},
     ]
   },

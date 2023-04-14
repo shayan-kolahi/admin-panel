@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {webSocket} from "rxjs/internal/observable/dom/webSocket";
 
-@Injectable({providedIn: BitmaxService})
-export class BitmaxService {
+@Injectable({providedIn: ExchangeService})
+export class ExchangeService {
   constructor() {}
   socketSubject: any = webSocket("wss://api.bitmax.ir/ws/ws")
   getData(isPing: boolean = false) {

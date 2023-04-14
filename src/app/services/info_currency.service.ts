@@ -4,10 +4,10 @@ import {Injectable} from "@angular/core";
 import {coins} from "../interface/coins";
 
 @Injectable({
-  providedIn: CurrencyService,
+  providedIn: Info_currencyService,
 })
 
-export class CurrencyService {
+export class Info_currencyService {
   constructor(private http: HttpClient,) { }
   currencyApi() : Observable<any>{
     return this.http.get<coins[]>("https://api.coinpaprika.com/v1/coins")

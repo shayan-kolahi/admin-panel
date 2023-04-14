@@ -1,21 +1,21 @@
 import {Component, OnInit} from '@angular/core';
-import {Bitmax2Service} from "../../../services/bitmax2.service";
+import {MarketService} from "../../../services/market.service";
 import {forkJoin} from "rxjs";
 
 
 @Component({
-  selector: 'app-bitmax',
-  templateUrl: './bitmax2.component.html',
-  styleUrls: ['./bitmax2.component.scss']
+  selector: 'app-market',
+  templateUrl: './market.component.html',
+  styleUrls: ['./market.component.scss']
 })
-export class Bitmax2Component implements OnInit {
-  constructor(private Bitmax2Service: Bitmax2Service) {}
+export class MarketComponent implements OnInit {
+  constructor(private MarketService: MarketService) {}
   result: any[] = [];
   term: string;
   status: string = "loading";
   check_price:boolean=true;
   ngOnInit(): void {
-    forkJoin(this.Bitmax2Service.statApi, this.Bitmax2Service.coinsApi).subscribe({
+    forkJoin(this.MarketService.statApi, this.MarketService.coinsApi).subscribe({
         next: (data: any) => {
           this.status = "success";
           let stats: any[] = data[0].message;

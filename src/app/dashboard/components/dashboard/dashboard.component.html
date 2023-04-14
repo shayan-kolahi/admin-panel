@@ -1,1 +1,66 @@
-<p>dashboard works!</p>
+<section class="p-5">
+  <div appBox>
+    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-3">
+      <div class="p-5 bg-white rounded border show">
+        <div class="flex justify-between items-center">
+          <div>
+            <h2 class="flex text-xl text-gray-700 mb-1">3,605</h2>
+            <h6 class="flex text-lg title_font text-gray-400 m-0">تعداد کلیک</h6>
+          </div>
+          <div>
+            <svg class="peity" height="60" width="60"><path d="M 30.000000000000004 0 A 30 30 0 0 1 47.633557568774194 54.270509831248425 L 30 30" data-value="2" fill="rgba(88, 103, 221, 0.3)"></path><path d="M 47.633557568774194 54.270509831248425 A 30 30 0 1 1 29.999999999999993 0 L 30 30" data-value="3" fill="rgb(88, 103, 221)"></path></svg>
+          </div>
+        </div>
+      </div>
+      <div class="p-5 bg-white rounded border show">
+        <div class="flex justify-between items-center">
+          <div>
+            <h2 class="flex text-xl text-gray-700 mb-1">3,137</h2>
+            <h6 class="flex text-lg title_font text-gray-400 m-0">تعداد بازدید</h6>
+          </div>
+          <div>
+            <svg class="peity" height="60" width="60"><path d="M 30.000000000000004 0 A 30 30 0 1 1 1.4683045111453907 20.729490168751582 L 30 30" data-value="4" fill="rgba(10, 187, 135, 0.3)"></path><path d="M 1.4683045111453907 20.729490168751582 A 30 30 0 0 1 29.999999999999993 0 L 30 30" data-value="1" fill="rgb(10, 187, 135)"></path></svg>
+          </div>
+        </div>
+      </div>
+      <div class="p-5 bg-white rounded border show">
+        <div class="flex justify-between items-center">
+          <div>
+            <h2 class="flex text-xl text-gray-700 mb-1">8,765</h2>
+            <h6 class="flex text-lg title_font text-gray-400 m-0">مجموع تبدیل</h6>
+          </div>
+          <div>
+            <svg class="peity" height="60" width="60"><path d="M 30.000000000000004 0 A 30 30 0 0 1 58.53169548885461 20.72949016875158 L 30 30" data-value="1" fill="rgba(255, 184, 34, 0.3)"></path><path d="M 58.53169548885461 20.72949016875158 A 30 30 0 1 1 29.999999999999993 0 L 30 30" data-value="4" fill="rgb(255, 184, 34)"></path></svg>
+          </div>
+        </div>
+      </div>
+      <div class="p-5 bg-white rounded border show">
+        <div class="flex justify-between items-center">
+          <div>
+            <h2 class="flex text-xl text-gray-700 mb-1">68%</h2>
+            <h6 class="flex text-lg title_font text-gray-400 m-0">نرخ بارگذاری صفحه</h6>
+          </div>
+          <div>
+            <svg class="peity" height="60" width="60"><path d="M 30.000000000000004 0 A 30 30 0 0 1 47.633557568774194 54.270509831248425 L 30 30" data-value="2" fill="rgba(85, 166, 235, 0.3)"></path><path d="M 47.633557568774194 54.270509831248425 A 30 30 0 1 1 29.999999999999993 0 L 30 30" data-value="3" fill="rgb(85, 166, 235)"></path></svg>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="grid col-span-1 lg:grid-cols-5 gap-4">
+      <div class="col-span-1 lg:col-span-4 p-5 rounded show border">
+        <h2 class="flex text-lg title_font text-gray-700 m-0">نمودار بازدیدکنندگان سایت</h2>
+        <apx-chart
+          [series]="chartOptions.series"
+          [chart]="chartOptions.chart"
+          [xaxis]="chartOptions.xaxis"
+        ></apx-chart>
+      </div>
+      <div class="col-span-1 flex flex-col justify-center items-center p-5 rounded show border">
+        <h2 class="flex text-lg title_font text-gray-700 m-0">کل مشتریان</h2>
+        <svg class="peity my-10" height="50" width="100"><rect data-value="2" fill="rgb(0, 77, 235)" x="1" y="38.888888888888886" width="8" height="11.111111111111114"></rect><rect data-value="5" fill="rgba(0, 77, 235, 0.3)" x="11.000000000000002" y="22.22222222222222" width="7.999999999999998" height="27.77777777777778"></rect><rect data-value="9" fill="rgb(0, 77, 235)" x="21" y="0" width="8" height="50"></rect><rect data-value="6" fill="rgba(0, 77, 235, 0.3)" x="31" y="16.66666666666667" width="8" height="33.33333333333333"></rect><rect data-value="5" fill="rgb(0, 77, 235)" x="40.99999999999999" y="22.22222222222222" width="8.000000000000014" height="27.77777777777778"></rect><rect data-value="2" fill="rgba(0, 77, 235, 0.3)" x="50.99999999999999" y="38.888888888888886" width="8.000000000000007" height="11.111111111111114"></rect><rect data-value="4" fill="rgb(0, 77, 235)" x="61" y="27.77777777777778" width="8" height="22.22222222222222"></rect><rect data-value="3" fill="rgba(0, 77, 235, 0.3)" x="71" y="33.333333333333336" width="8" height="16.666666666666664"></rect><rect data-value="7" fill="rgb(0, 77, 235)" x="81" y="11.111111111111107" width="8" height="38.88888888888889"></rect><rect data-value="5" fill="rgba(0, 77, 235, 0.3)" x="91" y="22.22222222222222" width="8" height="27.77777777777778"></rect></svg>
+        <h3 class="flex text-2xl text-blue-600 m-0">1,241</h3>
+      </div>
+    </section>
+
+  </div>
+</section>

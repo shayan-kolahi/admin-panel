@@ -3,7 +3,7 @@
     <div class="header flex justify-between items-center pb-5 mb-5 border-b">
       <h2 class="flex text-2xl title_font text-gray-700 m-0">کریپتوکارنسی</h2>
     </div>
-    <ng-container *ngIf="!isLoader">
+    <ng-container *ngIf="false">
       <div class="header flex justify-center items-center pb-10 mt-5">
         <h2 class="flex text-2xl title_font text-gray-600 m-0">5 تا از بهترین کریپتوکارنسی ها</h2>
       </div>
@@ -43,39 +43,25 @@
       <div class="header flex justify-center items-center pb-10 mt-10">
         <h2 class="flex text-2xl title_font text-gray-600 m-0">لیست کریپتوکارنسی ها</h2>
       </div>
-      <cdk-virtual-scroll-viewport appendOnly itemSize="50" class="h-96">
-        <table class="table w-full text-left EN_direction overflow-x-auto">
-          <thead class="sticky top-0 z-50 w-full">
-          <tr>
-            <td class="bg-blue-500 text-base normal-case font-normal text-white"><i class="fa-solid fa-hashtag"></i></td>
-            <td class="bg-blue-500 text-base normal-case font-normal text-white">name</td>
-            <td class="bg-blue-500 text-base normal-case font-normal text-white">is active</td>
-            <td class="bg-blue-500 text-base normal-case font-normal text-white">rank</td>
-            <td class="bg-blue-500 text-base normal-case font-normal text-white">type</td>
-            <td class="bg-blue-500 text-base normal-case font-normal text-white">is new</td>
-            <td class="bg-blue-500 text-base normal-case font-normal text-white">symbol</td>
-            <td class="bg-blue-500 text-base normal-case font-normal text-white"></td>
-          </tr>
-          </thead>
-          <tbody class="active w-full">
-          <tr *cdkVirtualFor="let item of currency;let i = index" class="h-2 w-full">
-            <td>{{i +1}}</td>
-            <td>{{item.name}}</td>
-            <td>
-              <i class="fa-light" [class]="item.is_active ? 'fa-check' : 'fa-close'"></i>
-            </td>
-            <td>{{item.rank}}</td>
-            <td>{{item.type}}</td>
-            <td>
-              <i class="fa-light" [class]="item.is_new ? 'fa-check' : 'fa-close'"></i>
-            </td>
-            <td>{{item.symbol}}</td>
-            <td>
-              <button [routerLink]="['details/' , item.id]" appButton>more details</button>
-            </td>
-          </tr>
-          </tbody>
-        </table>
+      <cdk-virtual-scroll-viewport scrollWindow appendOnly itemSize="4">
+        <div class="grid grid-cols-4 gap-4">
+          <a *cdkVirtualFor="let item of currency"
+             [routerLink]="['details/' , item.id]"
+             class="shadow rounded p-5 flex gap-2 flex-col bg-blue-50 transition-all hover:bg-blue-100">
+            <div class="flex flex-col gap-1">
+              <h2 class="flex text-lg title_font text-gray-700 m-0">{{item.name}}</h2>
+              <span class="flex text-md text-gray-700 m-0">{{item.symbol}}</span>
+            </div>
+            <div class="flex gap-2">
+              <span class="bg-red-200 border border-red-400 rounded text-red-600 px-2 py-1 text-xs" *ngIf="item.is_new">جدید</span>
+              <span class="bg-gray-200 border border-gray-400 rounded text-gray-600 px-2 py-1 text-xs" *ngIf="!item.is_active">غیر فعال</span>
+            </div>
+
+            <div class="flex justify-end w-full">
+              <button class="border bg-blue-700 border-blue-700 rounded text-white transition-all px-3 py-1 text-sm">ادامه مطلب</button>
+            </div>
+          </a>
+        </div>
       </cdk-virtual-scroll-viewport>
     </ng-container>
     <ng-container *ngIf="isLoader">

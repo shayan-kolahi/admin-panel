@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {SidebarMenu} from '../../../interface/sidebar-menu'
-import {AppService} from "../../../services/app.service";
-import {AloostadService} from "../../../services/aloostad.service";
 
 @Component({
   selector: 'app-sidebar',
@@ -9,21 +7,8 @@ import {AloostadService} from "../../../services/aloostad.service";
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
-
-  constructor(private AloostadService:AloostadService,private AppService:AppService) { }
-  nameProfile?:string;
-  isActiveLoading:boolean = true
-  ngOnInit(): void {
-    this.AloostadService.profile(this.AppService.TeacherId).subscribe({
-      next:data => {
-        this.nameProfile = data.FirstName + " " + data.LastName;
-        this.isActiveLoading = false
-      },
-      error:err => {
-        this.AppService.fire('خطا' , 'در اتصال به اینترنت')
-      },
-    })
-  }
+  constructor() { }
+  ngOnInit(): void {}
   SidebarMenu:SidebarMenu[] = [
     {
       text : 'داشبورد',
@@ -31,9 +16,9 @@ export class SidebarComponent implements OnInit {
       link : "/dashboard"
     },
     {
-      text : 'کریپتوکارنسی',
+      text : 'درباره ارزهای دیجیتال',
       icon : 'fa-coins',
-      link : "/currency"
+      link : "/info_currency"
     },
     {
       text : 'آب و هوا (vpn) ',
@@ -46,26 +31,19 @@ export class SidebarComponent implements OnInit {
       link : "/todo"
     },
     {
-      text : 'وبلاگ',
-      icon : 'fa-sparkles',
-      link : "/blog"
-    },
-    {
       text : 'الو استاد',
       icon : 'fa-sparkles',
       link : "/aloostad"
     },
     {
-      text : 'بیتمکس',
+      text : 'بازار حرفه ای رمز ارز',
       icon : 'fa-sparkles',
-      link : "/bitmax"
+      link : "/exchange"
     },
     {
-      text : 'بیتمکس 2',
+      text : 'قیمت ارز دیجیتال',
       icon : 'fa-sparkles',
-      link : "/bitmax2"
+      link : "/market"
     },
   ]
-
-
 }

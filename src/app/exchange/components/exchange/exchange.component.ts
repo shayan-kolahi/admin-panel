@@ -1,17 +1,17 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import {BitmaxService} from "../../../services/bitmax.service";
+import {ExchangeService} from "../../../services/exchange.service";
 import {interval} from "rxjs";
 import {AppService} from "../../../services/app.service";
 
 
 @Component({
-  selector: 'app-bitmax',
-  templateUrl: './bitmax.component.html',
-  styleUrls: ['./bitmax.component.scss']
+  selector: 'app-exchange',
+  templateUrl: './exchange.component.html',
+  styleUrls: ['./exchange.component.scss']
 })
-export class BitmaxComponent implements OnInit , OnDestroy{
+export class ExchangeComponent implements OnInit , OnDestroy{
 
-  constructor(private BitmaxService:BitmaxService,private AppService:AppService,) { }
+  constructor(private ExchangeService:ExchangeService, private AppService:AppService,) { }
   loader:boolean = true;
   data:any;
   data_name:any;
@@ -22,7 +22,7 @@ export class BitmaxComponent implements OnInit , OnDestroy{
     this.ping()
   }
   subscribe(){
-    this.BitmaxService.getData().subscribe({
+    this.ExchangeService.getData().subscribe({
       next:(data:any) => {
         this.loader = false;
         if(data.pong == null){
@@ -36,17 +36,17 @@ export class BitmaxComponent implements OnInit , OnDestroy{
   }
   ping(){
     this.interval_ping_unsubscribe$ = this.interval_ping$.subscribe(x => {
-      this.BitmaxService.getData(true);
+      this.ExchangeService.getData(true);
     });
 
   }
   ngOnDestroy() {
-    this.BitmaxService.socketSubject.unsubscribe();
+    this.ExchangeService.socketSubject.unsubscribe();
     this.interval_ping_unsubscribe$.unsubscribe()
   }
 
   change_market(id:string) {
     console.log(id)
-    this.BitmaxService.socketSubject.next({"event": "market", "data": id})
+    this.ExchangeService.socketSubject.next({"event": "market", "data": id})
   }
 }

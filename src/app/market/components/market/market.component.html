@@ -1,7 +1,7 @@
 <section class="p-5">
   <div appBox>
     <div class="header flex justify-between items-center pb-5 mb-5 border-b">
-      <h2 class="flex text-2xl title_font text-gray-700 m-0">صرافی بیتمکس</h2>
+      <h2 class="flex text-2xl title_font text-gray-700 m-0">وضعیت بازار</h2>
     </div>
     <ng-container *ngIf="status === 'error'">
       <app-Spinner_error></app-Spinner_error>
@@ -30,7 +30,6 @@
             <td class="bg-blue-500 text-base normal-case font-normal text-white">تغییر 24h</td>
             <td class="bg-blue-500 text-base normal-case font-normal text-white">حجم معاملات 24h</td>
             <td class="bg-blue-500 text-base normal-case font-normal text-white"> نمودار هفتگی</td>
-            <td class="bg-blue-500 text-base normal-case font-normal text-white"></td>
           </tr>
           </thead>
           <tbody class="active w-full">
@@ -62,9 +61,6 @@
             </td>
             <td>
               <img [src]="item.chart_url" [alt]="item.symbol">
-            </td>
-            <td>
-              <button class="btn btn-outline">بیشتر</button>
             </td>
           </tr>
           </tbody>

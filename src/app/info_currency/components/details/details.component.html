@@ -2,7 +2,7 @@
   <div appBox>
     <div class="header flex justify-between items-center flex-wrap pb-5 mb-5 border-b">
       <h2 class="flex text-2xl title_font text-gray-700 m-0">جزییات</h2>
-      <button routerLink="/currency" appButton>همه کریپتوکارنسی ها</button>
+      <button routerLink="/info_currency" appButton>همه کریپتوکارنسی ها</button>
     </div>
     <div *ngIf="!isLoader" class="grid grid-cols-1 xl:grid-cols-3 gap-4 mt-5">
       <div class="col-span-1 flex justify-center"><img class="w-52 h-52 object-contain" src="{{item.logo}}" alt="{{item.id}}"></div>

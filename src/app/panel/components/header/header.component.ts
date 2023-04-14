@@ -13,11 +13,7 @@ export class HeaderComponent implements OnInit{
               private router: Router,) { }
   @Output() status_sidebar = new EventEmitter<boolean>();
   isActive : boolean = true;
-  ngOnInit(): void {
-    if(window.innerWidth < 1024){
-      this.isActive = false
-    }
-  }
+  ngOnInit(): void {}
   click_status() {
     this.isActive = !this.isActive
     this.status_sidebar.emit(this.isActive);
