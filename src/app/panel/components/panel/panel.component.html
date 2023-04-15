@@ -1,4 +1,16 @@
-<app-sidebar [class]="isActive_sidebar ? 'right-[-300px] lg:right-0' : 'right-0 lg:right-[-300px]'" class="w-[300px] transition-all sidebar fixed top-0 bottom-0 p-2 z-10 overflow-y-auto text-center bg-gray-900"></app-sidebar>
+<app-sidebar [class]="isActive_sidebar ? 'right-[-300px] lg:right-0' : 'right-0 lg:right-[-300px]'"
+             class="w-[300px]
+                    transition-all
+                    sidebar
+                    fixed
+                    top-0
+                    bottom-0
+                    p-2
+                    z-10
+                    overflow-y-auto
+                    text-center
+                    bg-gray-900">
+</app-sidebar>
 <main [class]="isActive_sidebar ? 'width-calc' : ''" class="transition-all mr-auto">
   <app-header (status_sidebar)="status_sidebar($event)"></app-header>
   <section class="relative min-h-c">

@@ -1,19 +1,20 @@
-.fa-custom::after{
+.fa-times-custom::after{
+  content: "\f0c9";
   font-family: "Font Awesome 6 Pro";
   font-style: normal;
   font-weight: 300;
 }
-.fa-times-custom::after{
-  content: "\f0c9";
-}
 .fa-bars-custom::after{
   content: "\f00d";
+  font-family: "Font Awesome 6 Pro";
+  font-style: normal;
+  font-weight: 300;
 }
-@media (max-width: 1200px) {
+@media (max-width: 1024px) {
   .fa-times-custom::after{
-    content: "\f0c9";
+    content: "\f00d";
   }
   .fa-bars-custom::after{
-    content: "\f00d";
+    content: "\f0c9";
   }
 }
