@@ -1,48 +1,27 @@
-/*
-  @use '@angular/material' as mat;
-  @include mat.core();
-  $admin-panel-primary: mat.define-palette(mat.$indigo-palette);
-  $admin-panel-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
-  $admin-panel-warn: mat.define-palette(mat.$red-palette);
-  $admin-panel-theme: mat.define-light-theme((color: (primary: $admin-panel-primary, accent: $admin-panel-accent, warn: $admin-panel-warn,)));
-  @include mat.all-component-themes($admin-panel-theme);
-*/
+@import "./assets/scss/fonts";
+@import "./assets/scss/variables";
 
-@font-face {
-  font-family: 'Mikhak';
-  src: url('assets/fonts/Mikhak/Mikhak-Bold.eot');
-  src: url('assets/fonts/Mikhak/Mikhak-Bold.eot?#iefix') format('embedded-opentype'),
-  url('assets/fonts/Mikhak/Mikhak-Bold.woff2') format('woff2'),
-  url('assets/fonts/Mikhak/Mikhak-Bold.woff') format('woff'),
-  url('assets/fonts/Mikhak/Mikhak-Bold.ttf') format('truetype'),
-  url('assets/fonts/Mikhak/Mikhak-Bold.svg#Mikhak-Bold') format('svg');
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: iransans;
-  src: url("assets/fonts/iransansdn/IRANSansDNFaNum.ttf"),
-  url("assets/fonts/iransansdn/IRANSansDNFaNum.woff2"),
-  url("assets/fonts/iransansdn/IRANSansDNFaNum.eot"),
-  url("assets/fonts/iransansdn/IRANSansDNFaNum.woff")
-}
 html , body{
   scroll-behavior: smooth;
   background: #f5f5f5;
-  font-family: iransans , sans-serif ; direction: rtl
+  font-family: $font-family;
+  direction: rtl;
 }
+
 @import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
 @import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 .FA_direction{
   direction: rtl;
 }
 .EN_direction{
   direction: ltr;
 }
+
 tbody.active > tr:nth-child(even) > th,
 tbody.active > tr:nth-child(even) > td{
   background: #eee9 !important;
@@ -53,7 +32,7 @@ tbody.active > tr:nth-child(even) > td{
   color: #fff !important;
 }
 .title_font{
-  font-family: 'Mikhak' , sans-serif !important;
+  font-family: $font-family-Bold !important;
 }
 .swal2-styled.swal2-confirm{
   display: flex !important;
@@ -78,8 +57,7 @@ tbody.active > tr:nth-child(even) > td{
 }
 .swal2-popup.swal2-toast .swal2-title{
   margin-bottom: 0 !important;
-  font-family: 'Mikhak';
-
+  font-family: $font-family;
 }
 .swal2-popup.swal2-toast .swal2-actions{
   position: absolute;

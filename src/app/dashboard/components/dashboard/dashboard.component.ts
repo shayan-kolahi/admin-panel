@@ -21,7 +21,7 @@ export class DashboardComponent implements OnInit {
       chart: {
         height: 250,
         type: "bar",
-        fontFamily: 'iransans',
+        fontFamily: 'IRANSansWeb',
         toolbar: {show: false,}
       },
       xaxis: {

@@ -3,12 +3,7 @@
     <div class="bg-white rounded shadow-lg py-5 px-7">
       <nav class="flex justify-between">
         <div class="flex items-center">
-          <div class="profile dropdown ml-3">
-            <label tabindex="0" class="btn m-1"> خوش آمدید <i class="far fa-angle-down mr-1"></i> </label>
-            <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 border">
-              <li (click)="logOut()"><a>خروج</a></li>
-            </ul>
-          </div>
+          <svg class="w-12" fill="#23b4e7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 457 527.6400146484375"><path d="M65.28 207.3L359 376.9l32.65-18.85v-37.71L97.93 150.75l-32.65 18.84zm163.2 245l65.27-37.68L0 245V131.91L228.48 0 457 131.91v75.38L228.48 75.37l-65.28 37.69L457 282.65v113.08L228.48 527.64 0 395.73v-75.37z"></path></svg>
         </div>
         <div class="flex space-x-5 justify-center items-center pr-2">
           <i (click)="click_status()" [class]="isActive ? 'fa-bars-custom' : 'fa-times-custom'"
