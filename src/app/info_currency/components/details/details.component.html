@@ -9,18 +9,12 @@
       <div class="col-span-1 xl:col-span-2 text-left EN_direction">
         <h2 class="text-2xl title_font text-gray-900 m-0 mb-5">{{item.name}}</h2>
         <span class="text-lg text-gray-700 m-0 text-justify flex">{{item.description}}</span>
-        <span class="text-md text-gray-500 m-0 flex items-center mt-3 flex-wrap"> first data at : {{item.first_data_at | date:"MM / dd / yyyy"}} <span class="mx-2 fa-solid fa-circle text-xs text-gray-300"></span> last data at : {{item.last_data_at | date:"MM / dd / yyyy"}}</span>
+        <span class="text-md text-gray-500 m-0 flex items-center mt-3 flex-wrap"> first data at : {{item.first_data_at | date:"MM / dd / yyyy"}} <span class="mx-2 text-xs text-gray-300">-</span> last data at : {{item.last_data_at | date:"MM / dd / yyyy"}}</span>
         <h2 class="text-xl title_font text-gray-500 m-0 mb-5 mt-10">Links :</h2>
         <div class="flex flex-wrap gap-2">
           <ng-container *ngFor="let link of item.links | keyvalue">
             <a href="{{link.value}}" target="_blank" class="btn btn-primary normal-case">
-              <i class="text-2xl fab fa-{{link.key}}"></i>
-              <ng-container *ngIf="link.key === 'website'">
-                <i class="text-2xl fa-solid fa-globe"></i>
-              </ng-container>
-              <ng-container *ngIf="link.key === 'source_code'">
-                <i class="text-2xl fa-solid fa-code"></i>
-              </ng-container>
+              <i>{{link.key}}</i>
             </a>
           </ng-container>
         </div>
